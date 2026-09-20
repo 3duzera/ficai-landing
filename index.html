@@ -1,0 +1,2083 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<!-- ============================================================
+     FICAÍ — Landing page V1
+     Seu lugar por aqui.
+
+     ESTA É UMA VERSÃO DE AVALIAÇÃO DE DIREÇÃO VISUAL.
+     Fotografias, links e conteúdos definitivos entram depois.
+     Procure no arquivo por:  SUBSTITUIR / ADICIONAR / CONFIRMAR
+     ============================================================ -->
+
+<title>Ficaí | Studios na Vila Mariana, São Paulo</title>
+<meta name="description" content="Studios completos na Vila Mariana, em São Paulo, pensados para uma estadia confortável, tranquila e com tudo por perto.">
+<meta name="theme-color" content="#FAF7F1">
+
+<!-- OPEN GRAPH — SUBSTITUIR url e imagem quando o domínio existir -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="Ficaí">
+<meta property="og:title" content="Ficaí | Studios na Vila Mariana, São Paulo">
+<meta property="og:description" content="Studios completos na Vila Mariana, em São Paulo, pensados para uma estadia confortável, tranquila e com tudo por perto.">
+<meta property="og:locale" content="pt_BR">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:url" content="https://exemplo.com.br/"><!-- ADICIONAR DOMÍNIO -->
+<meta property="og:image" content="images/brand/og-image.jpg"><!-- SUBSTITUIR FOTO — 1200×630 -->
+<meta name="twitter:card" content="summary_large_image">
+
+<!-- FAVICON: o acento agudo do "Í", único símbolo da marca -->
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%23FAF7F1'/%3E%3Cpath d='M9 12 L21 6' stroke='%234F6138' stroke-width='3.4' stroke-linecap='round'/%3E%3Cpath d='M16 14 L16 26' stroke='%232C2724' stroke-width='3.4' stroke-linecap='round'/%3E%3C/svg%3E">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght,SOFT,WONK@0,9..144,300..900,0..100,0..1;1,9..144,300..900,0..100,0..1&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&family=DM+Mono:wght@300;400;500&display=swap" rel="stylesheet">
+
+<!-- JSON-LD — apenas o que é fato. Sem endereço, preço ou avaliação. -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  "name": "Ficaí",
+  "slogan": "Seu lugar por aqui.",
+  "description": "Studios completos na Vila Mariana, em São Paulo.",
+  "areaServed": { "@type": "Place", "name": "Vila Mariana, São Paulo, SP, Brasil" }
+}
+</script>
+<!--
+  ADICIONAR QUANDO HOUVER DADOS REAIS — não preencher com informação suposta:
+  { "@type":"LodgingBusiness", "name":"Ficaí Vila Mariana",
+    "address":{...}, "telephone":"...", "url":"...", "image":[...] }
+-->
+
+<style>
+/* ============================================================
+   TOKENS
+   ============================================================ */
+:root{
+  /* cor — contraste medido, ver nota em cada token */
+  --papel:      #FAF7F1;   /* off-white quente, fundo base */
+  --creme:      #F2EBDF;   /* fundo alternado de seção */
+  --areia:      #E6DBC8;   /* superfícies e placeholders de foto */
+  --taupe:      #B9A78F;   /* DECORATIVO APENAS — filetes e bordas. Nunca texto. */
+  --taupe-txt:  #756352;   /* texto terciário (5.4:1 no papel, 4.8:1 no creme) */
+  --cafe:       #6B5544;   /* texto secundário (6.5:1 no papel) */
+  --grafite:    #2C2724;   /* texto principal e faixa escura quente */
+  --verde-fundo:#33402C;   /* faixas full-bleed */
+  --verde:      #4F6138;   /* links e acento do "Í" (6.3:1 no papel) */
+  --verde-claro:#9BAD7F;   /* traço das ilustrações sobre fundo escuro */
+  --terracota:  #9E5236;   /* acento raro (5.3:1 no papel) */
+
+  /* papéis semânticos — redefinidos por faixa em .band--* */
+  --bg:   var(--papel);
+  --fg:   var(--grafite);
+  --fg-2: var(--cafe);
+  --fg-3: var(--taupe-txt);
+  --rule: rgba(44,39,36,.16);
+  --rule-forte: rgba(44,39,36,.32);
+  --accent: var(--verde);
+  --ph-bg: var(--areia);
+  --ph-fg: var(--cafe);
+
+  /* tipografia */
+  --ff-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+  --ff-sans: 'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --ff-mono: 'DM Mono', ui-monospace, SFMono-Regular, Consolas, monospace;
+
+  --fs-mono:    clamp(.66rem, .58rem + .22vw, .75rem);
+  --fs-sm:      clamp(.84rem, .8rem + .18vw, .92rem);
+  --fs-body:    clamp(.98rem, .92rem + .3vw, 1.09rem);
+  --fs-lead:    clamp(1.06rem, .98rem + .48vw, 1.32rem);
+  --fs-h3:      clamp(1.4rem, 1.15rem + 1.1vw, 2.1rem);
+  --fs-h2:      clamp(2.1rem, 1.35rem + 3.3vw, 4.4rem);
+  --fs-h1:      clamp(2.7rem, 1.3rem + 6.4vw, 7.2rem);
+  --fs-giant:   clamp(4rem, 1rem + 15vw, 13rem);
+
+  /* espaço */
+  --sp-1: .25rem;  --sp-2: .5rem;   --sp-3: .75rem;  --sp-4: 1rem;
+  --sp-5: 1.5rem;  --sp-6: 2rem;    --sp-7: 3rem;    --sp-8: 4rem;
+  --sp-9: 6rem;    --sp-10: 8rem;   --sp-11: 11rem;
+  --band-y: clamp(4.5rem, 2rem + 9vw, 11rem);
+  --gutter: clamp(1.25rem, .4rem + 3.4vw, 4.5rem);
+  --col-gap: clamp(1rem, .4rem + 2vw, 2.25rem);
+  --maxw: 1440px;
+
+  /* forma e movimento */
+  --r-sm: 2px;  --r: 4px;  --r-pill: 999px;
+  --t-fast: 170ms;  --t: 340ms;  --t-slow: 720ms;
+  --ease: cubic-bezier(.22,.61,.36,1);
+  --hdr-h: 72px;
+}
+@media (min-width: 900px){ :root{ --hdr-h: 88px; } }
+
+/* faixa verde profunda */
+.band--verde{
+  --bg: var(--verde-fundo); --fg: var(--papel); --fg-2: #D9D2C2; --fg-3: #B9A78F;
+  --rule: rgba(250,247,241,.22); --rule-forte: rgba(250,247,241,.42);
+  --accent: var(--verde-claro);
+  --ph-bg: rgba(250,247,241,.08); --ph-fg: #D9D2C2;
+}
+/* faixa grafite quente */
+.band--escura{
+  --bg: var(--grafite); --fg: var(--papel); --fg-2: #CFC5B6; --fg-3: #B9A78F;
+  --rule: rgba(250,247,241,.2); --rule-forte: rgba(250,247,241,.4);
+  --accent: var(--verde-claro);
+  --ph-bg: rgba(250,247,241,.07); --ph-fg: #CFC5B6;
+}
+/* faixa creme */
+.band--creme{ --bg: var(--creme); --rule: rgba(44,39,36,.18); }
+
+/* ============================================================
+   RESET E BASE
+   ============================================================ */
+*,*::before,*::after{ box-sizing:border-box; }
+html{ -webkit-text-size-adjust:100%; scroll-behavior:smooth; scroll-padding-top: calc(var(--hdr-h) + 1rem); }
+body{
+  margin:0; background:var(--papel); color:var(--grafite);
+  font-family:var(--ff-sans); font-size:var(--fs-body); line-height:1.62;
+  font-optical-sizing:auto; -webkit-font-smoothing:antialiased;
+  overflow-x:hidden;
+}
+img,svg{ max-width:100%; display:block; }
+h1,h2,h3,h4,p,figure,dl,dd{ margin:0; }
+ul,ol{ margin:0; padding:0; list-style:none; }
+button{ font:inherit; color:inherit; background:none; border:0; padding:0; cursor:pointer; }
+a{ color:inherit; text-decoration:none; }
+::selection{ background:var(--verde-fundo); color:var(--papel); }
+
+:focus-visible{
+  outline:2px solid var(--accent); outline-offset:3px; border-radius:var(--r-sm);
+}
+.band--verde :focus-visible, .band--escura :focus-visible{ outline-color:var(--papel); }
+
+.skip{
+  position:absolute; left:var(--sp-4); top:-100px; z-index:200;
+  background:var(--grafite); color:var(--papel);
+  padding:.7rem 1.1rem; border-radius:var(--r); font-size:var(--fs-sm);
+  transition:top var(--t-fast) var(--ease);
+}
+.skip:focus{ top:var(--sp-4); }
+
+/* ============================================================
+   UTILITÁRIOS DE LAYOUT
+   ============================================================ */
+.band{ background:var(--bg); color:var(--fg); padding-block:var(--band-y); position:relative; }
+.wrap{ width:min(100% - var(--gutter)*2, var(--maxw)); margin-inline:auto; }
+.grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:var(--col-gap); }
+/* padding lateral que alinha um elemento full-width com o .wrap */
+.edge-pad{ padding-inline: calc((100% - min(100% - var(--gutter)*2, var(--maxw)))/2); }
+
+/* ============================================================
+   COMPONENTES
+   ============================================================ */
+/* — micro-label monoespaçada (eyebrows, categorias, specs) */
+.mono{
+  font-family:var(--ff-mono); font-size:var(--fs-mono); font-weight:400;
+  text-transform:uppercase; letter-spacing:.15em; line-height:1.5;
+  color:var(--fg-3);
+}
+.eyebrow{ display:flex; align-items:center; gap:.7rem; color:var(--fg-3); margin-bottom:var(--sp-5); }
+.eyebrow::after{ content:''; height:1px; flex:1; background:var(--rule); max-width:8rem; }
+
+/* — numeração grande de seção/studio */
+.num{
+  font-family:var(--ff-display); font-optical-sizing:none;
+  font-variation-settings:'SOFT' 30,'WONK' 1,'opsz' 144;
+  font-size:clamp(2.6rem,1.4rem + 4vw,4.6rem); font-weight:300;
+  line-height:.8; color:var(--accent); display:block;
+}
+
+/* — títulos */
+.h1,.h2,.h3{ font-family:var(--ff-display); font-weight:400; letter-spacing:-.02em; }
+.h1{
+  font-size:var(--fs-h1); line-height:.94;
+  font-variation-settings:'SOFT' 40,'WONK' 1,'opsz' 144;
+}
+.h2{
+  font-size:var(--fs-h2); line-height:1.02;
+  font-variation-settings:'SOFT' 35,'WONK' 1,'opsz' 120;
+  text-wrap:balance;
+}
+.h3{
+  font-size:var(--fs-h3); line-height:1.12;
+  font-variation-settings:'SOFT' 25,'WONK' 0,'opsz' 72;
+}
+.lead{ font-size:var(--fs-lead); line-height:1.55; color:var(--fg-2); text-wrap:pretty; }
+.txt{ color:var(--fg-2); text-wrap:pretty; }
+.txt + .txt{ margin-top:var(--sp-4); }
+
+/* — botões */
+.btn{
+  display:inline-flex; align-items:center; gap:.55rem;
+  font-size:var(--fs-sm); font-weight:500; letter-spacing:.01em;
+  padding:.78rem 1.35rem; border-radius:var(--r-pill);
+  border:1px solid currentColor; color:var(--fg);
+  transition:background var(--t-fast) var(--ease), color var(--t-fast) var(--ease),
+             border-color var(--t-fast) var(--ease), transform var(--t-fast) var(--ease);
+}
+.btn:hover{ background:var(--fg); color:var(--bg); }
+.btn:active{ transform:translateY(1px); }
+.btn--solid{ background:var(--grafite); color:var(--papel); border-color:var(--grafite); }
+.btn--solid:hover{ background:var(--verde-fundo); border-color:var(--verde-fundo); color:var(--papel); }
+.band--verde .btn--solid{ background:var(--papel); color:var(--verde-fundo); border-color:var(--papel); }
+.band--verde .btn--solid:hover{ background:transparent; color:var(--papel); }
+.band--escura .btn--solid{ background:var(--papel); color:var(--grafite); border-color:var(--papel); }
+.band--escura .btn--solid:hover{ background:transparent; color:var(--papel); }
+.btn--lg{ padding:1rem 1.8rem; font-size:var(--fs-body); }
+
+/* — link com seta: sublinhado que cresce da esquerda */
+.arrow{
+  display:inline-flex; align-items:baseline; gap:.5rem;
+  font-size:var(--fs-sm); font-weight:500; color:var(--fg);
+  padding-bottom:.28rem; position:relative; text-align:left;
+}
+.arrow::after{
+  content:''; position:absolute; left:0; bottom:0; height:1px; width:100%;
+  background:currentColor; transform-origin:left; transform:scaleX(.24);
+  transition:transform var(--t) var(--ease);
+}
+.arrow:hover::after,.arrow:focus-visible::after{ transform:scaleX(1); }
+.arrow > span:last-child{ transition:transform var(--t) var(--ease); }
+.arrow:hover > span:last-child{ transform:translateX(4px); }
+.arrow--accent{ color:var(--accent); }
+
+/* — filete */
+.rule{ height:1px; background:var(--rule); border:0; margin:0; }
+
+/* — etiqueta de conteúdo provisório (visível de propósito nesta V1) */
+.provisorio{
+  display:inline-flex; align-items:center; gap:.45rem;
+  font-family:var(--ff-mono); font-size:var(--fs-mono); text-transform:uppercase;
+  letter-spacing:.14em; color:var(--fg-3);
+  border:1px dashed var(--rule-forte); border-radius:var(--r-pill);
+  padding:.3rem .75rem;
+}
+.provisorio::before{ content:''; width:5px; height:5px; border-radius:50%; background:var(--terracota); }
+.band--verde .provisorio::before,.band--escura .provisorio::before{ background:var(--verde-claro); }
+
+/* ——————————————————————————————————————————————
+   PLACEHOLDER DE FOTOGRAFIA
+   A proporção é travada em --ratio para que a foto
+   definitiva entre sem alterar o layout.
+   —————————————————————————————————————————————— */
+.ph{
+  position:relative; aspect-ratio:var(--ratio, 4/5);
+  background:var(--ph-bg); color:var(--ph-fg);
+  border-radius:var(--r); overflow:hidden;
+  display:grid; place-items:center; text-align:center;
+  padding:var(--sp-5);
+}
+.ph::before{
+  content:''; position:absolute; inset:0; pointer-events:none;
+  background-image:repeating-linear-gradient(132deg,
+    rgba(107,85,68,.055) 0 1px, transparent 1px 10px);
+}
+.band--verde .ph::before,.band--escura .ph::before{
+  background-image:repeating-linear-gradient(132deg,
+    rgba(250,247,241,.07) 0 1px, transparent 1px 10px);
+}
+.ph::after{
+  content:''; position:absolute; inset:clamp(7px,1.2vw,14px);
+  border:1px dashed currentColor; opacity:.34; border-radius:var(--r-sm);
+  pointer-events:none;
+}
+.ph__in{ position:relative; z-index:1; display:grid; gap:.45rem; max-width:26ch; }
+.ph__tag{
+  font-family:var(--ff-mono); font-size:var(--fs-mono); text-transform:uppercase;
+  letter-spacing:.16em; font-weight:500;
+}
+.ph__note{ font-size:var(--fs-mono); letter-spacing:.02em; opacity:.8; }
+.ph__spec{
+  font-family:var(--ff-mono); font-size:calc(var(--fs-mono) - 1px);
+  opacity:.62; word-break:break-word;
+}
+.ph--sm{ padding:var(--sp-3); }
+.ph--sm .ph__note{ display:none; }
+
+/* — ilustrações monoline (traço único, desenhadas à mão) */
+.ill{ width:clamp(46px,5vw,64px); height:auto; color:var(--accent); overflow:visible; }
+.ill path,.ill circle,.ill line,.ill rect,.ill polyline{
+  fill:none; stroke:currentColor; stroke-width:1.6;
+  stroke-linecap:round; stroke-linejoin:round; vector-effect:non-scaling-stroke;
+}
+
+/* — lista editorial (amenidades) */
+.list-ed li{
+  display:flex; justify-content:space-between; align-items:baseline; gap:var(--sp-4);
+  padding-block:.62rem; border-bottom:1px solid var(--rule);
+  font-size:var(--fs-sm); color:var(--fg-2);
+}
+.list-ed li:first-child{ border-top:1px solid var(--rule); }
+.tbc{
+  font-family:var(--ff-mono); font-size:var(--fs-mono); text-transform:uppercase;
+  letter-spacing:.12em; color:var(--fg-3); white-space:nowrap;
+}
+
+/* ============================================================
+   HEADER
+   ============================================================ */
+.hdr{
+  position:fixed; inset:0 0 auto 0; z-index:100;
+  height:var(--hdr-h);
+  background:transparent;
+  transition:background var(--t) var(--ease), box-shadow var(--t) var(--ease);
+}
+.hdr::after{
+  content:''; position:absolute; inset:auto 0 0 0; height:1px;
+  background:var(--rule); opacity:0; transition:opacity var(--t) var(--ease);
+}
+.hdr.is-stuck{ background:var(--papel); }
+.hdr.is-stuck::after{ opacity:1; }
+.hdr__in{
+  height:100%; display:flex; align-items:center; gap:var(--sp-5);
+  width:min(100% - var(--gutter)*2, var(--maxw)); margin-inline:auto;
+}
+
+/* wordmark — o acento do Í é um elemento próprio */
+.wm{
+  font-family:var(--ff-display); font-weight:400; letter-spacing:.1em;
+  font-variation-settings:'SOFT' 40,'WONK' 1,'opsz' 144;
+  font-size:1.34rem; line-height:1; display:inline-block; white-space:nowrap;
+  transition:font-size var(--t) var(--ease);
+}
+.hdr.is-stuck .wm{ font-size:1.18rem; }
+.wm__i{ position:relative; display:inline-block; }
+.wm__acc{
+  position:absolute; left:50%; bottom:100%; width:.66em; height:auto;
+  transform:translate(-44%,.1em); color:var(--verde); overflow:visible;
+}
+.wm__acc path{ stroke:currentColor; stroke-width:3.2; stroke-linecap:round; fill:none; }
+.hdr .wm:hover .wm__acc{ transform:translate(-44%,-.02em); }
+.wm__acc{ transition:transform var(--t) var(--ease); }
+
+.nav{ display:flex; gap:clamp(1rem,2.2vw,2.2rem); margin-left:auto; }
+.nav a{
+  font-size:var(--fs-sm); color:var(--grafite); position:relative; padding-block:.3rem;
+}
+.nav a::after{
+  content:''; position:absolute; left:0; right:0; bottom:0; height:1px;
+  background:currentColor; transform:scaleX(0); transform-origin:right;
+  transition:transform var(--t) var(--ease);
+}
+.nav a:hover::after,.nav a:focus-visible::after{ transform:scaleX(1); transform-origin:left; }
+
+.hdr__actions{ display:flex; align-items:center; gap:var(--sp-4); margin-left:var(--sp-5); }
+.lang{ display:flex; align-items:center; gap:.3rem; font-family:var(--ff-mono); font-size:var(--fs-mono); }
+.lang button{ letter-spacing:.1em; color:var(--taupe-txt); padding:.25rem .15rem; transition:color var(--t-fast) var(--ease); }
+.lang button[aria-pressed="true"]{ color:var(--grafite); text-decoration:underline; text-underline-offset:3px; }
+.lang span{ color:var(--taupe); }
+.hdr .btn{ padding:.6rem 1.15rem; }
+
+/* botão hambúrguer */
+.burger{ display:none; width:34px; height:34px; position:relative; margin-left:.2rem; }
+.burger i{
+  position:absolute; left:6px; right:6px; height:1.5px; background:var(--grafite); border-radius:2px;
+  transition:transform var(--t) var(--ease), opacity var(--t-fast) var(--ease);
+}
+.burger i:nth-child(1){ top:12px; } .burger i:nth-child(2){ top:21px; }
+.burger[aria-expanded="true"] i:nth-child(1){ transform:translateY(4.5px) rotate(45deg); }
+.burger[aria-expanded="true"] i:nth-child(2){ transform:translateY(-4.5px) rotate(-45deg); }
+
+/* menu mobile */
+.mmenu{
+  position:fixed; inset:0; z-index:95; background:var(--papel);
+  padding:calc(var(--hdr-h) + var(--sp-6)) var(--gutter) var(--sp-7);
+  display:flex; flex-direction:column; justify-content:space-between;
+  opacity:0; visibility:hidden; transform:translateY(-10px);
+  transition:opacity var(--t) var(--ease), transform var(--t) var(--ease), visibility var(--t);
+  overflow-y:auto;
+}
+.mmenu.is-open{ opacity:1; visibility:visible; transform:none; }
+.mmenu[hidden]{ display:none; }
+.mmenu__nav{ display:flex; flex-direction:column; gap:.2rem; }
+.mmenu__nav a{
+  font-family:var(--ff-display); font-size:clamp(1.9rem,9vw,2.9rem); line-height:1.25;
+  font-variation-settings:'SOFT' 30,'WONK' 1,'opsz' 96;
+  display:flex; align-items:baseline; gap:.9rem;
+  border-bottom:1px solid var(--rule); padding-block:.55rem;
+}
+.mmenu__nav a .mono{ font-size:var(--fs-mono); }
+.mmenu__foot{ display:grid; gap:var(--sp-5); padding-top:var(--sp-6); }
+body.is-locked{ overflow:hidden; }
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero{ padding-top:calc(var(--hdr-h) + clamp(2rem,6vw,5rem)); padding-bottom:var(--band-y); }
+.hero__in{ display:grid; grid-template-columns:repeat(12,1fr); gap:var(--col-gap); align-items:start; }
+.hero__eyebrow{ grid-column:1/-1; grid-row:1; }
+.hero__title{ grid-column:1/9; grid-row:2; position:relative; z-index:2; margin-top:clamp(1rem,3vw,3rem); }
+.hero__title .l2{ display:block; padding-left:clamp(0px,7vw,7rem); }
+/* o "í" do headline em verde: o acento da marca sem quebrar o texto real */
+.acc-i{ color:var(--verde); }
+
+.hero__media{ grid-column:7/-1; grid-row:2/6; }
+.hero__lead{ grid-column:1/6; grid-row:3; margin-top:var(--sp-6); }
+.hero__ctas{ grid-column:1/5; grid-row:4; display:flex; flex-wrap:wrap; gap:var(--sp-3); margin-top:var(--sp-6); align-items:flex-start; }
+/* o detalhe quadrado invade a coluna da foto grande — sobreposicao intencional */
+.hero__detail{ grid-column:5/8; grid-row:5; z-index:2; align-self:end; margin-bottom:var(--sp-6); }
+.hero__meta{
+  grid-column:1/-1; grid-row:6; margin-top:var(--sp-7); padding-top:var(--sp-4);
+  border-top:1px solid var(--rule);
+  display:flex; flex-wrap:wrap; gap:var(--sp-3) var(--sp-7);
+}
+
+/* ============================================================
+   MANIFESTO
+   ============================================================ */
+.mani__in{ display:grid; grid-template-columns:repeat(12,1fr); gap:var(--col-gap); }
+.mani__head{ grid-column:1/-1; grid-row:1; }
+.mani__title{ grid-column:1/8; grid-row:2; margin-bottom:var(--sp-6); }
+.mani__txt{ grid-column:2/7; grid-row:3; }
+.mani__a{ grid-column:8/11; grid-row:2/4; align-self:center; }
+.mani__b{ grid-column:11/-1; grid-row:3/5; align-self:end; margin-bottom:var(--sp-8); }
+.mani__ill{ grid-column:1/3; grid-row:4; align-self:end; color:var(--verde-claro); }
+.mani__ill svg{ width:clamp(64px,9vw,120px); }
+
+/* ============================================================
+   STUDIOS
+   ============================================================ */
+.st-head{ display:grid; grid-template-columns:repeat(12,1fr); gap:var(--col-gap); align-items:end; margin-bottom:var(--sp-9); }
+.st-head > div:first-child{ grid-column:1/8; }
+.st-head .lead{ grid-column:9/-1; }
+
+/* destaque (studios 01 e 02) */
+.sd{ display:grid; grid-template-columns:repeat(12,1fr); gap:var(--col-gap); align-items:center; }
+.sd + .sd{ margin-top:var(--sp-10); }
+.sd__media{ grid-column:1/7; grid-row:1; }
+.sd__info{ grid-column:8/-1; grid-row:1; }
+.sd:nth-child(even) .sd__media{ grid-column:7/-1; }
+.sd:nth-child(even) .sd__info{ grid-column:1/6; text-align:right; }
+.sd:nth-child(even) .sd__specs{ justify-content:flex-end; }
+.sd:nth-child(even) .num{ margin-left:auto; }
+.sd__info h3{ margin-top:var(--sp-3); }
+.sd__specs{ display:flex; gap:var(--sp-6); margin-top:var(--sp-4); }
+.sd__specs dt{ color:var(--fg-3); }
+.sd__specs dd{ font-size:var(--fs-sm); color:var(--fg-2); margin-top:.2rem; }
+.sd__desc{ margin-top:var(--sp-4); font-size:var(--fs-sm); color:var(--fg-3); }
+.sd .arrow{ margin-top:var(--sp-5); }
+
+/* trilho (studios 03–05) */
+.rail-head{
+  display:flex; justify-content:space-between; align-items:flex-end; gap:var(--sp-5);
+  margin-top:clamp(var(--sp-8), 6vw, var(--sp-10)); margin-bottom:var(--sp-5);
+  padding-bottom:var(--sp-3); border-bottom:1px solid var(--rule);
+}
+.rail-nav{ display:flex; gap:.5rem; }
+.rail-nav[hidden]{ display:none; }
+.rail-nav button{
+  width:38px; height:38px; border:1px solid var(--rule-forte); border-radius:50%;
+  display:grid; place-items:center;
+  transition:background var(--t-fast) var(--ease), color var(--t-fast) var(--ease), opacity var(--t-fast);
+}
+.rail-nav button:hover:not(:disabled){ background:var(--fg); color:var(--bg); }
+.rail-nav button:disabled{ opacity:.3; cursor:default; }
+.rail{
+  display:grid; grid-auto-flow:column;
+  grid-auto-columns:clamp(240px, 32vw, 560px);
+  gap:var(--col-gap);
+  overflow-x:auto; scroll-snap-type:x proximity;
+  scrollbar-width:none; padding-bottom:var(--sp-2);
+  /* alinha o início com o .wrap e deixa o conteúdo sangrar à direita */
+  --rail-edge:calc((100% - min(100% - var(--gutter)*2, var(--maxw)))/2);
+  padding-inline:var(--rail-edge);
+  padding-right:var(--gutter);
+  /* sem isto o snap "start" encaixava na borda do scrollport e o trilho
+     nascia deslocado, comendo o alinhamento com a margem da página */
+  scroll-padding-left:var(--rail-edge);
+}
+.rail::-webkit-scrollbar{ display:none; }
+.st-card{ scroll-snap-align:start; }
+.st-card .num{ font-size:clamp(1.8rem,1.2rem + 1.6vw,2.6rem); margin-top:var(--sp-4); }
+.st-card h3{ font-size:clamp(1.15rem,1rem + .5vw,1.4rem); margin-top:var(--sp-2); }
+.st-card .mono{ margin-top:.35rem; }
+.st-card .arrow{ margin-top:var(--sp-4); }
+/* alturas ligeiramente diferentes — ritmo editorial */
+.st-card:nth-child(2){ margin-top:var(--sp-7); }
+.st-card:nth-child(3){ margin-top:var(--sp-4); }
+
+/* ============================================================
+   AMENITIES
+   ============================================================ */
+.am__head{ display:grid; grid-template-columns:repeat(12,1fr); gap:var(--col-gap); margin-bottom:var(--sp-9); }
+.am__head > div:first-child{ grid-column:1/9; }
+.am__head .txt{ grid-column:9/-1; align-self:end; font-size:var(--fs-sm); }
+.am__grid{ display:grid; grid-template-columns:repeat(12,1fr); gap:var(--sp-8) var(--col-gap); }
+.am__block:nth-child(1){ grid-column:1/6; }
+.am__block:nth-child(2){ grid-column:7/12; margin-top:var(--sp-7); }
+.am__block:nth-child(3){ grid-column:2/7; }
+.am__block:nth-child(4){ grid-column:8/-1; margin-top:var(--sp-7); }
+.am__block h3{ margin:var(--sp-4) 0 var(--sp-2); }
+.am__block .mono{ margin-bottom:var(--sp-4); }
+.am__note{ grid-column:1/-1; }
+
+/* ============================================================
+   SEGURANÇA
+   ============================================================ */
+.seg{ padding-block:clamp(3.5rem,2rem + 7vw,8rem); }
+.seg__in{ display:grid; grid-template-columns:repeat(12,1fr); gap:var(--col-gap); align-items:start; }
+.seg__ill{ grid-column:1/3; }
+.seg__title{ grid-column:3/10; }
+.seg__side{ grid-column:10/-1; align-self:end; display:grid; gap:var(--sp-4); }
+.seg__txt{ grid-column:3/8; margin-top:var(--sp-6); }
+
+/* ============================================================
+   NEIGHBORHOOD
+   ============================================================ */
+.nb{ overflow:hidden; }
+.nb__in{ display:grid; grid-template-columns:repeat(12,1fr); gap:var(--col-gap); align-items:center; }
+.nb__media{ grid-column:1/8; margin-left:calc(var(--gutter) * -1); }
+.nb__info{ grid-column:9/-1; }
+.nb__small{ grid-column:6/8; margin-top:var(--sp-6); }
+.nb__info h2{ margin-bottom:var(--sp-5); }
+.nb__facts{ margin-top:var(--sp-6); }
+
+/* ============================================================
+   GUIDE
+   ============================================================ */
+.gd__head{ display:grid; grid-template-columns:repeat(12,1fr); gap:var(--col-gap); margin-bottom:var(--sp-7); }
+.gd__head > div:first-child{ grid-column:1/8; }
+.gd__head .lead{ grid-column:8/-1; align-self:end; }
+.filters{
+  display:flex; gap:.45rem; flex-wrap:wrap; margin-bottom:var(--sp-7);
+  padding-bottom:var(--sp-5); border-bottom:1px solid var(--rule);
+}
+.filters button{
+  font-family:var(--ff-mono); font-size:var(--fs-mono); text-transform:uppercase;
+  letter-spacing:.12em; padding:.5rem .9rem; border-radius:var(--r-pill);
+  border:1px solid var(--rule-forte); color:var(--fg-2); white-space:nowrap;
+  transition:background var(--t-fast) var(--ease), color var(--t-fast) var(--ease), border-color var(--t-fast) var(--ease);
+}
+.filters button:hover{ border-color:var(--fg); color:var(--fg); }
+.filters button[aria-pressed="true"]{ background:var(--grafite); color:var(--papel); border-color:var(--grafite); }
+.gd__grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:var(--sp-8) var(--col-gap); }
+.gd-card{ display:grid; gap:var(--sp-3); align-content:start; }
+.gd-card[hidden]{ display:none; }
+/* alturas alternadas — evita a grade uniforme de diretório */
+.gd-card:nth-child(3n+2){ margin-top:var(--sp-7); }
+.gd-card:nth-child(3n+3){ margin-top:var(--sp-3); }
+.gd-card__top{ display:flex; justify-content:space-between; align-items:baseline; gap:var(--sp-3); }
+.gd-card h3{ font-size:clamp(1.05rem,.95rem + .4vw,1.25rem); }
+.gd-card .txt{ font-size:var(--fs-sm); }
+.gd__count{ margin-top:var(--sp-7); }
+.gd__cta{ margin-top:var(--sp-8); padding-top:var(--sp-6); border-top:1px solid var(--rule); }
+.gd__empty{ padding:var(--sp-8) 0; }
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.ab__in{ display:grid; grid-template-columns:repeat(12,1fr); gap:var(--col-gap); }
+.ab__head{ grid-column:1/-1; }
+.ab__title{ grid-column:1/9; margin-bottom:var(--sp-7); }
+.ab__txt{ grid-column:3/9; display:grid; gap:var(--sp-4); }
+.ab__media{ grid-column:9/-1; }
+.ab__sign{ grid-column:3/9; margin-top:var(--sp-6); }
+
+/* ============================================================
+   BOOKING
+   ============================================================ */
+.bk__head{ margin-bottom:var(--sp-9); max-width:36ch; }
+.bk__paths{ display:grid; grid-template-columns:repeat(12,1fr); gap:var(--sp-8) var(--col-gap); }
+.bk__col:nth-child(1){ grid-column:1/7; }
+.bk__col:nth-child(2){ grid-column:8/-1; margin-top:var(--sp-7); }
+.bk__col h3{ margin:var(--sp-3) 0 var(--sp-4); }
+.bk__list li{ border-bottom:1px solid var(--rule); }
+.bk__list li:first-child{ border-top:1px solid var(--rule); }
+.bk__row{
+  display:flex; justify-content:space-between; align-items:center; gap:var(--sp-4);
+  padding-block:.95rem; width:100%; text-align:left;
+  transition:padding-inline var(--t) var(--ease);
+}
+.bk__row:hover{ padding-inline:.45rem 0; }
+.bk__row .mono{ color:var(--fg-3); }
+.bk__row em{ font-style:normal; font-size:var(--fs-sm); color:var(--fg-2); display:flex; align-items:center; gap:.5rem; }
+.bk__wa{ padding:var(--sp-6); border:1px solid var(--rule-forte); border-radius:var(--r); }
+
+/* ============================================================
+   FAQ
+   ============================================================ */
+.faq__in{ display:grid; grid-template-columns:repeat(12,1fr); gap:var(--col-gap); }
+.faq__head{ grid-column:1/5; }
+.faq__head h2{ position:sticky; top:calc(var(--hdr-h) + 2rem); }
+.faq__list{ grid-column:6/-1; }
+.faq__item{ border-bottom:1px solid var(--rule); }
+.faq__item:first-child{ border-top:1px solid var(--rule); }
+.faq__item summary{
+  list-style:none; cursor:pointer; padding-block:1.15rem;
+  display:flex; justify-content:space-between; align-items:baseline; gap:var(--sp-5);
+  font-family:var(--ff-display); font-size:clamp(1.02rem,.95rem + .45vw,1.3rem);
+  font-variation-settings:'SOFT' 25,'WONK' 0,'opsz' 48;
+  transition:color var(--t-fast) var(--ease);
+}
+.faq__item summary::-webkit-details-marker{ display:none; }
+.faq__item summary:hover{ color:var(--accent); }
+.faq__sign{ position:relative; width:13px; height:13px; flex:none; align-self:center; }
+.faq__sign::before,.faq__sign::after{
+  content:''; position:absolute; background:currentColor; border-radius:2px;
+  transition:transform var(--t) var(--ease), opacity var(--t-fast) var(--ease);
+}
+.faq__sign::before{ inset:6px 0 6px 0; height:1.5px; }
+.faq__sign::after{ inset:0 6px 0 6px; width:1.5px; }
+.faq__item[open] .faq__sign::after{ transform:scaleY(0); opacity:0; }
+.faq__body{ display:grid; grid-template-rows:0fr; transition:grid-template-rows var(--t) var(--ease); }
+.faq__item[open] .faq__body{ grid-template-rows:1fr; }
+.faq__body > div{ overflow:hidden; }
+.faq__body p{
+  font-size:var(--fs-sm); color:var(--fg-2); padding-bottom:1.3rem;
+  max-width:58ch;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.ft{ padding-top:var(--band-y); padding-bottom:var(--sp-6); }
+.ft__top{ display:grid; grid-template-columns:repeat(12,1fr); gap:var(--sp-8) var(--col-gap); }
+.ft__brand{ grid-column:1/6; }
+.ft__brand .assin{ margin-top:var(--sp-3); font-family:var(--ff-display); font-size:var(--fs-lead); }
+.ft__brand address{ font-style:normal; margin-top:var(--sp-5); }
+.ft__cols{ grid-column:7/-1; display:grid; grid-template-columns:repeat(3,1fr); gap:var(--col-gap); }
+.ft__cols h4{ margin-bottom:var(--sp-4); }
+.ft__cols li + li{ margin-top:.55rem; }
+.ft__cols a{ font-size:var(--fs-sm); color:var(--fg-2); transition:color var(--t-fast) var(--ease); }
+.ft__cols a:hover{ color:var(--fg); }
+.ft__word{
+  font-family:var(--ff-display); font-size:var(--fs-giant); line-height:.78;
+  font-variation-settings:'SOFT' 45,'WONK' 1,'opsz' 144; font-weight:300;
+  letter-spacing:.02em; margin-top:var(--sp-9); padding-top:.28em; color:var(--fg);
+  display:block; opacity:.92;
+}
+.ft__word .wm__acc{ color:var(--verde-claro); }
+.ft__bottom{
+  margin-top:var(--sp-6); padding-top:var(--sp-4); border-top:1px solid var(--rule);
+  display:flex; flex-wrap:wrap; justify-content:space-between; gap:var(--sp-3) var(--sp-6);
+}
+.ft__legal{ display:flex; flex-wrap:wrap; gap:var(--sp-5); }
+
+/* ============================================================
+   MODAL DO STUDIO
+   ============================================================ */
+dialog.modal{
+  width:min(100% - 2rem, 1100px); max-height:min(92vh, 900px);
+  padding:0; border:0; border-radius:var(--r);
+  background:var(--papel); color:var(--grafite); overflow:hidden;
+}
+dialog.modal::backdrop{ background:rgba(44,39,36,.62); }
+.modal__scroll{ overflow-y:auto; max-height:min(92vh,900px); padding:clamp(1.5rem,3vw,3rem); }
+.modal__head{ display:flex; justify-content:space-between; align-items:flex-start; gap:var(--sp-5); }
+.modal__close{
+  width:40px; height:40px; border:1px solid var(--rule-forte); border-radius:50%;
+  display:grid; place-items:center; flex:none;
+  transition:background var(--t-fast) var(--ease), color var(--t-fast) var(--ease);
+}
+.modal__close:hover{ background:var(--grafite); color:var(--papel); }
+.modal__gal{
+  display:grid; grid-auto-flow:column; grid-auto-columns:minmax(260px,1fr);
+  gap:var(--col-gap); margin:var(--sp-6) 0;
+  overflow-x:auto; scrollbar-width:none; scroll-snap-type:x proximity;
+}
+.modal__gal::-webkit-scrollbar{ display:none; }
+.modal__gal > *{ scroll-snap-align:start; }
+.modal__body{ display:grid; grid-template-columns:1fr 1fr; gap:var(--sp-7); align-items:start; }
+.modal__specs{ display:flex; gap:var(--sp-7); }
+.modal__specs dt{ color:var(--fg-3); }
+.modal__specs dd{ font-family:var(--ff-display); font-size:var(--fs-h3); margin-top:.2rem; }
+.modal__ctas{ display:flex; flex-wrap:wrap; gap:var(--sp-3); margin-top:var(--sp-5); }
+.modal__ref{ margin-top:var(--sp-5); font-size:var(--fs-sm); color:var(--fg-2); }
+
+/* ============================================================
+   REVEAL — só com JS ativo. Sem JS, tudo aparece normalmente.
+   ============================================================ */
+.js [data-reveal]{
+  opacity:0; transform:translateY(16px);
+  transition:opacity var(--t-slow) var(--ease), transform var(--t-slow) var(--ease);
+  transition-delay:calc(var(--i, 0) * 80ms);
+}
+.js [data-reveal].is-in{ opacity:1; transform:none; }
+.js .ph{ transition:transform var(--t-slow) var(--ease); }
+.js a:hover > .ph, .js button:hover > .ph,
+.js .sd:hover .sd__media .ph, .js .st-card:hover .ph, .js .gd-card:hover .ph{ transform:scale(1.015); }
+
+/* ============================================================
+   RESPONSIVO
+   Mobile não é o desktop empilhado: hierarquia, ordem,
+   sangrias e galerias são repensadas.
+   ============================================================ */
+@media (max-width: 1100px){
+  .nav{ gap:1.1rem; }
+  .nav a{ font-size:.82rem; }
+  .am__block:nth-child(1){ grid-column:1/7; }
+  .am__block:nth-child(2){ grid-column:7/-1; }
+  .am__block:nth-child(3){ grid-column:1/7; }
+  .am__block:nth-child(4){ grid-column:7/-1; }
+  .gd__grid{ grid-template-columns:repeat(2,1fr); }
+  .gd-card:nth-child(3n+2),.gd-card:nth-child(3n+3){ margin-top:0; }
+  .gd-card:nth-child(even){ margin-top:var(--sp-7); }
+}
+
+@media (max-width: 900px){
+  .nav{ display:none; }
+  .hdr__actions .btn{ display:none; }
+  .burger{ display:block; }
+  .hdr__actions{ margin-left:auto; }
+
+  /* HERO — ordem própria no mobile */
+  .hero__in{ display:flex; flex-direction:column; align-items:stretch; }
+  .hero__title{ margin-top:var(--sp-4); }
+  .hero__title .l2{ padding-left:1.5rem; }
+  .hero__ctas{ order:3; margin-top:var(--sp-6); }
+  .hero__media{ order:4; margin-top:var(--sp-7); margin-right:calc(var(--gutter) * -1); }
+  .hero__lead{ order:5; margin-top:var(--sp-6); }
+  .hero__detail{ order:6; width:52%; margin-top:var(--sp-5); margin-left:auto; }
+  .hero__meta{ order:7; }
+  .hero__ctas{ gap:var(--sp-3) var(--sp-4); }
+
+  .mani__in,.sd,.st-head,.am__head,.am__grid,.seg__in,.nb__in,.gd__head,.ab__in,.bk__paths,.faq__in,.ft__top{
+    display:flex; flex-direction:column;
+  }
+  .st-head,.am__head,.gd__head{ gap:var(--sp-4); }
+  .st-head h2,.am__head h2,.gd__head h2,.mani__title,.ab__title,.seg__title,.faq__head h2{ max-width:none; }
+  .mani__a{ margin-top:var(--sp-6); width:64%; }
+  .mani__b{ width:44%; margin:var(--sp-4) 0 0 auto; }
+  .mani__ill{ margin-top:var(--sp-6); }
+  .sd + .sd{ margin-top:var(--sp-8); }
+  .sd__info{ margin-top:var(--sp-4); }
+  .sd:nth-child(even) .sd__info{ text-align:left; }
+  .sd:nth-child(even) .sd__specs{ justify-content:flex-start; }
+  .sd:nth-child(even) .num{ margin-left:0; }
+  .am__grid{ gap:var(--sp-7); }
+  .am__block{ margin-top:0 !important; }
+  .seg__txt{ margin-top:var(--sp-5); }
+  .seg__side{ margin-top:var(--sp-5); }
+  .nb__media{ margin-left:calc(var(--gutter) * -1); margin-right:calc(var(--gutter) * -1); }
+  .nb__info{ margin-top:var(--sp-6); }
+  .nb__small{ width:56%; margin-top:var(--sp-5); }
+  .ab__media{ margin-top:var(--sp-6); width:70%; }
+  .bk__col:nth-child(2){ margin-top:var(--sp-8); }
+  .faq__head h2{ position:static; margin-bottom:var(--sp-6); }
+  .ft__cols{ margin-top:var(--sp-7); }
+  .modal__body{ grid-template-columns:1fr; gap:var(--sp-5); }
+
+  /* filtros do guia em trilho horizontal */
+  .filters{
+    flex-wrap:nowrap; overflow-x:auto; scrollbar-width:none;
+    margin-inline:calc(var(--gutter) * -1); padding-inline:var(--gutter);
+  }
+  .filters::-webkit-scrollbar{ display:none; }
+  .gd__grid{ grid-template-columns:1fr; gap:var(--sp-7); }
+  .gd-card:nth-child(even){ margin-top:0; }
+
+  .rail{ grid-auto-columns:minmax(212px, 68%); }
+  .rail-nav{ display:none; }
+  .st-card:nth-child(2),.st-card:nth-child(3){ margin-top:0; }
+}
+
+@media (max-width: 560px){
+  .ft__cols{ grid-template-columns:1fr 1fr; gap:var(--sp-6) var(--col-gap); }
+  .modal__specs{ gap:var(--sp-5); }
+  .hero__detail{ width:62%; }
+  .mani__a{ width:78%; } .mani__b{ width:52%; }
+}
+
+/* ============================================================
+   MOVIMENTO REDUZIDO
+   ============================================================ */
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *,*::before,*::after{
+    animation-duration:.001ms !important; animation-iteration-count:1 !important;
+    transition-duration:.001ms !important; scroll-behavior:auto !important;
+  }
+  .js [data-reveal]{ opacity:1 !important; transform:none !important; }
+  .js .ph{ transform:none !important; }
+}
+
+@media print{
+  .hdr,.mmenu,.rail-nav,.filters{ display:none !important; }
+  .band{ padding-block:2rem; }
+  .js [data-reveal]{ opacity:1 !important; transform:none !important; }
+}
+</style>
+</head>
+
+<body id="topo">
+<script>document.documentElement.classList.add('js');</script>
+
+<a class="skip" href="#conteudo" data-i18n="a11y.skip">Ir para o conteúdo</a>
+
+<!-- ============================================================
+     HEADER
+     ============================================================ -->
+<header class="hdr" id="hdr">
+  <div class="hdr__in">
+    <a class="wm" href="#topo" aria-label="Ficaí — início">
+      <span aria-hidden="true">FICA<span class="wm__i">I<svg class="wm__acc" viewBox="0 0 24 10" aria-hidden="true"><path d="M2.6 8.4 L21.2 2"/></svg></span></span>
+    </a>
+
+    <nav class="nav" aria-label="Navegação principal">
+      <a href="#studios"   data-i18n="nav.studios">Studios</a>
+      <a href="#amenities" data-i18n="nav.exp">A experiência</a>
+      <a href="#bairro"    data-i18n="nav.bairro">Vila Mariana</a>
+      <a href="#sobre"     data-i18n="nav.sobre">Sobre</a>
+      <a href="#faq"       data-i18n="nav.faq">FAQ</a>
+    </nav>
+
+    <div class="hdr__actions">
+      <!-- SELETOR DE IDIOMA — o dicionário EN está no objeto FICAI.i18n -->
+      <div class="lang" role="group" aria-label="Idioma / Language">
+        <button type="button" data-lang="pt" aria-pressed="true">PT</button>
+        <span aria-hidden="true">/</span>
+        <button type="button" data-lang="en" aria-pressed="false">EN</button>
+      </div>
+      <a class="btn btn--solid" href="#reserva" data-i18n="nav.reservar">Reservar</a>
+      <button class="burger" id="burger" aria-expanded="false" aria-controls="mmenu" aria-label="Abrir menu">
+        <i></i><i></i>
+      </button>
+    </div>
+  </div>
+</header>
+<div id="sentinel" aria-hidden="true" style="position:absolute;top:0;height:64px;width:1px;pointer-events:none;"></div>
+
+<!-- menu mobile -->
+<div class="mmenu" id="mmenu" hidden>
+  <nav class="mmenu__nav" aria-label="Navegação mobile">
+    <a href="#studios"><span class="mono">01</span><span data-i18n="nav.studios">Studios</span></a>
+    <a href="#amenities"><span class="mono">02</span><span data-i18n="nav.exp">A experiência</span></a>
+    <a href="#bairro"><span class="mono">03</span><span data-i18n="nav.bairro">Vila Mariana</span></a>
+    <a href="#sobre"><span class="mono">04</span><span data-i18n="nav.sobre">Sobre</span></a>
+    <a href="#faq"><span class="mono">05</span><span data-i18n="nav.faq">FAQ</span></a>
+  </nav>
+  <div class="mmenu__foot">
+    <a class="btn btn--solid btn--lg" href="#reserva" data-i18n="nav.reservar">Reservar</a>
+    <p class="mono" data-i18n="footer.local">Vila Mariana · São Paulo — SP</p>
+  </div>
+</div>
+
+<main id="conteudo" tabindex="-1">
+
+<!-- ============================================================
+     HERO
+     ============================================================ -->
+<section class="hero band" aria-labelledby="hero-t">
+  <div class="wrap hero__in">
+
+    <p class="mono hero__eyebrow" data-reveal>
+      <span data-i18n="hero.eyebrow">Studios · Vila Mariana · São Paulo</span>
+    </p>
+
+    <h1 class="h1 hero__title" id="hero-t" data-reveal style="--i:1">
+      <span data-i18n-html="hero.l1">São Paulo por alguns dias?</span>
+      <span class="l2" data-i18n-html="hero.l2">Fica<span class="acc-i">í</span>.</span>
+    </h1>
+
+    <!-- FOTO: substituir pela imagem hero da Ficaí — SUBSTITUIR FOTO -->
+    <figure class="hero__media" data-reveal style="--i:2">
+      <div class="ph" style="--ratio:4/5">
+        <div class="ph__in">
+          <span class="ph__tag">[FOTO HERO]</span>
+          <span class="ph__note" data-i18n="ph.note">Adicionar fotografia posteriormente</span>
+          <span class="ph__spec">4:5 · 1200×1500 · images/hero/hero-principal.jpg</span>
+        </div>
+      </div>
+    </figure>
+
+    <p class="lead hero__lead" data-reveal style="--i:3" data-i18n="hero.lead">
+      Studios premium na Vila Mariana, pensados para você ter conforto, tranquilidade
+      e tudo o que precisa para se sentir em casa.
+    </p>
+
+    <div class="hero__ctas" data-reveal style="--i:4">
+      <a class="btn btn--solid btn--lg" href="#studios" data-i18n="hero.cta1">Encontre seu studio</a>
+      <!-- ADICIONAR LINK WHATSAPP -->
+      <a class="btn btn--lg" href="#" data-link="whatsapp" rel="noopener" data-i18n="hero.cta2">Falar no WhatsApp</a>
+    </div>
+
+    <!-- FOTO: detalhe do hero (objeto, canto, textura) — SUBSTITUIR FOTO -->
+    <figure class="hero__detail" data-reveal style="--i:5">
+      <div class="ph ph--sm" style="--ratio:1/1">
+        <div class="ph__in">
+          <span class="ph__tag">[FOTO DETALHE]</span>
+          <span class="ph__spec">1:1 · 900×900 · images/hero/hero-detalhe.jpg</span>
+        </div>
+      </div>
+    </figure>
+
+    <div class="hero__meta" data-reveal>
+      <p class="mono" data-i18n="hero.m1">Cinco studios</p>
+      <p class="mono" data-i18n="hero.m2">26 e 28 m²</p>
+      <p class="mono" data-i18n="hero.m3">Perto do metrô Vila Mariana</p>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     MANIFESTO
+     ============================================================ -->
+<section class="band band--verde mani" aria-labelledby="mani-t">
+  <div class="wrap mani__in">
+
+    <p class="eyebrow mono mani__head" data-reveal><span data-i18n="mani.eyebrow">Manifesto</span></p>
+
+    <h2 class="h2 mani__title" id="mani-t" data-reveal data-i18n="mani.title">Ficaí à vontade.</h2>
+
+    <div class="mani__txt" data-reveal style="--i:1">
+      <p class="lead" data-i18n="mani.p1">
+        Acreditamos que estar longe de casa não precisa significar abrir mão da sensação
+        de estar em casa.
+      </p>
+      <p class="txt" style="margin-top:var(--sp-5)" data-i18n="mani.p2">
+        Por isso, cada espaço foi pensado nos detalhes: conforto, praticidade, tranquilidade
+        e tudo aquilo que você gostaria de encontrar ao chegar.
+      </p>
+    </div>
+
+    <!-- FOTO: detalhe de ambiente — SUBSTITUIR FOTO -->
+    <figure class="mani__a" data-reveal style="--i:2">
+      <div class="ph" style="--ratio:4/5">
+        <div class="ph__in">
+          <span class="ph__tag">[FOTO DETALHE 01]</span>
+          <span class="ph__note" data-i18n="ph.note">Adicionar fotografia posteriormente</span>
+          <span class="ph__spec">4:5 · 1000×1250 · images/brand/detalhe-01.jpg</span>
+        </div>
+      </div>
+    </figure>
+
+    <!-- FOTO: detalhe de ambiente — SUBSTITUIR FOTO -->
+    <figure class="mani__b" data-reveal style="--i:3">
+      <div class="ph ph--sm" style="--ratio:1/1">
+        <div class="ph__in">
+          <span class="ph__tag">[FOTO DETALHE 02]</span>
+          <span class="ph__spec">1:1 · 800×800 · images/brand/detalhe-02.jpg</span>
+        </div>
+      </div>
+    </figure>
+
+    <div class="mani__ill" data-reveal aria-hidden="true">
+      <svg class="ill" viewBox="0 0 64 64" style="width:100%">
+        <path d="M7 30.5 31.6 9.4c.6-.5 1.4-.5 2 0L57 30.2"/>
+        <path d="M13 28.4v25.3c0 .9.7 1.6 1.6 1.6h34.6c.9 0 1.7-.7 1.7-1.6V28"/>
+        <path d="M26 55.2V39.8c0-.8.6-1.5 1.4-1.5h9.1c.8 0 1.5.7 1.5 1.5v15.2"/>
+        <path d="M45.5 13.4V8.8h5.8v9.9"/>
+      </svg>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     STUDIOS
+     ============================================================ -->
+<section class="band studios" id="studios" aria-labelledby="st-t">
+  <div class="wrap">
+    <div class="st-head">
+      <div>
+        <p class="eyebrow mono" data-reveal><span data-i18n="st.eyebrow">Os studios</span></p>
+        <h2 class="h2" id="st-t" data-reveal data-i18n="st.title">Escolha seu lugar.</h2>
+      </div>
+      <p class="lead" data-reveal style="--i:1" data-i18n="st.lead">
+        Cinco studios. O mesmo cuidado em cada detalhe.
+      </p>
+    </div>
+
+    <!-- STUDIOS 01 e 02 (28 m²) — renderizados a partir de FICAI.studios -->
+    <div id="studios-destaque"></div>
+
+    <div class="rail-head">
+      <p class="mono" data-i18n="st.railLabel">26 m² · até 2 hóspedes · studios 03—05</p>
+      <div class="rail-nav">
+        <button type="button" id="rail-prev" aria-label="Studios anteriores" aria-controls="studios-rail">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5 8 12l7 7"/></svg>
+        </button>
+        <button type="button" id="rail-next" aria-label="Próximos studios" aria-controls="studios-rail">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"/></svg>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- STUDIOS 03–05 (26 m²) — trilho que sangra à direita -->
+  <div class="rail" id="studios-rail" tabindex="0" role="group" aria-label="Studios 03 a 05"></div>
+</section>
+
+<!-- ============================================================
+     AMENITIES
+     ============================================================ -->
+<section class="band band--creme am" id="amenities" aria-labelledby="am-t">
+  <div class="wrap">
+    <div class="am__head">
+      <div>
+        <p class="eyebrow mono" data-reveal><span data-i18n="am.eyebrow">A experiência</span></p>
+        <h2 class="h2" id="am-t" data-reveal data-i18n-html="am.title">Você chega.<br>O resto já está aqui.</h2>
+      </div>
+      <p class="txt" data-reveal style="--i:1" data-i18n="am.sub">
+        Tudo o que está aqui embaixo é igual nos cinco studios.
+      </p>
+    </div>
+
+    <!-- CONTEÚDO: revisar lista final de amenidades -->
+    <div class="am__grid">
+
+      <div class="am__block" data-reveal>
+        <svg class="ill" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M8 44.5V26.8c0-1.2 1-2.2 2.2-2.2h43.4c1.2 0 2.2 1 2.2 2.2v17.7"/>
+          <path d="M5.8 44.2h52.6c.8 0 1.4.7 1.3 1.5l-.7 7.6"/>
+          <path d="M4.9 53.3 4.3 45.7"/>
+          <path d="M14.6 24.4v-5.1c0-1.1.9-2 2-2h30.6c1.1 0 2 .9 2 2v5.2"/>
+          <path d="M21.8 24.3c-.4-2.6 1.6-4.4 4-4.4h12.6c2.3 0 4.3 1.9 3.8 4.4"/>
+        </svg>
+        <p class="mono" data-i18n="am.c1.k">Para morar</p>
+        <h3 class="h3" data-i18n="am.c1.t">O básico, bem feito.</h3>
+        <ul class="list-ed">
+          <li><span data-i18n="am.c1.i1">Roupa de cama</span></li>
+          <li><span data-i18n="am.c1.i2">Toalhas</span></li>
+          <li><span data-i18n="am.c1.i3">Ar-condicionado</span></li>
+          <li><span data-i18n="am.c1.i4">TV</span></li>
+          <li><span data-i18n="am.c1.i5">Wi-Fi</span></li>
+          <li><span data-i18n="am.c1.i6">Secador</span></li>
+          <li><span data-i18n="am.c1.i7">Outros itens essenciais</span><span class="tbc" data-i18n="tbc.short">a confirmar</span></li>
+        </ul>
+      </div>
+
+      <div class="am__block" data-reveal style="--i:1">
+        <svg class="ill" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M11.5 27.6h41c.9 0 1.6.8 1.5 1.7l-2.4 20.4c-.2 1.9-1.8 3.3-3.7 3.3H16.1c-1.9 0-3.5-1.4-3.7-3.3L10 29.3c-.1-.9.6-1.7 1.5-1.7z"/>
+          <path d="M53.8 32.2h4.3c2 0 3.6 1.7 3.4 3.7-.2 2-1.9 3.5-3.9 3.4l-4.6-.2"/>
+          <path d="M23.4 21.6c-2.6-3-2-5.6.6-8.4"/>
+          <path d="M32.2 21.6c-2.6-3-2-5.6.6-8.4"/>
+          <path d="M41 21.6c-2.6-3-2-5.6.6-8.4"/>
+        </svg>
+        <p class="mono" data-i18n="am.c2.k">Para cozinhar</p>
+        <h3 class="h3" data-i18n="am.c2.t">Cozinha de verdade.</h3>
+        <ul class="list-ed">
+          <li><span data-i18n="am.c2.i1">Cozinha totalmente equipada</span></li>
+          <li><span data-i18n="am.c2.i2">Cooktop</span></li>
+          <li><span data-i18n="am.c2.i3">Micro-ondas</span></li>
+          <li><span data-i18n="am.c2.i4">Cafeteira</span></li>
+          <li><span data-i18n="am.c2.i5">Liquidificador</span></li>
+          <li><span data-i18n="am.c2.i6">Louças, panelas e utensílios</span></li>
+        </ul>
+      </div>
+
+      <div class="am__block" data-reveal>
+        <svg class="ill" viewBox="0 0 64 64" aria-hidden="true">
+          <rect x="12.5" y="7.5" width="39" height="49" rx="3.2"/>
+          <circle cx="32" cy="36" r="12.4"/>
+          <circle cx="32" cy="36" r="5.6"/>
+          <circle cx="20.6" cy="15.4" r="1.6"/>
+          <path d="M28 15.4h16"/>
+        </svg>
+        <p class="mono" data-i18n="am.c3.k">Para a rotina</p>
+        <h3 class="h3" data-i18n="am.c3.t">Estadia longa também funciona.</h3>
+        <ul class="list-ed">
+          <li><span data-i18n="am.c3.i1">Máquina de lavar</span></li>
+          <li><span data-i18n="am.c3.i2">Demais itens</span><span class="tbc" data-i18n="tbc.short">a confirmar</span></li>
+        </ul>
+      </div>
+
+      <div class="am__block" data-reveal style="--i:1">
+        <svg class="ill" viewBox="0 0 64 64" aria-hidden="true">
+          <path d="M14 56V12.4c0-1 .8-1.9 1.9-1.9h20.4c1 0 1.9.9 1.9 1.9V56"/>
+          <path d="M38.2 26.6h10.5c1 0 1.9.8 1.9 1.9V56"/>
+          <path d="M7.6 56.2h49.2"/>
+          <path d="M20.4 19.4h4.2M29 19.4h4.2M20.4 28.6h4.2M29 28.6h4.2M20.4 37.8h4.2M29 37.8h4.2"/>
+          <path d="M43 35.6h3.4M43 44.2h3.4"/>
+          <path d="M23.4 56V48h5.6v8"/>
+        </svg>
+        <p class="mono" data-i18n="am.c4.k">No prédio</p>
+        <h3 class="h3" data-i18n="am.c4.t">Além da porta do studio.</h3>
+        <ul class="list-ed">
+          <li><span data-i18n="am.c4.i1">Academia</span></li>
+          <li><span data-i18n="am.c4.i2">Lavanderia</span></li>
+          <li><span data-i18n="am.c4.i3">Outras comodidades</span><span class="tbc" data-i18n="tbc.short">a confirmar</span></li>
+        </ul>
+      </div>
+
+      <p class="am__note provisorio" data-reveal data-i18n="am.note">
+        Lista provisória — revisar antes de publicar
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     SEGURANÇA
+     ============================================================ -->
+<section class="band band--escura seg" aria-labelledby="seg-t">
+  <div class="wrap seg__in">
+
+    <div class="seg__ill" data-reveal aria-hidden="true">
+      <svg class="ill" viewBox="0 0 64 64" style="width:clamp(52px,6vw,76px)">
+        <path d="M32 6.4 53.4 14v17.6c0 12.4-8.4 21.9-21.4 26.3C18.9 53.5 10.6 44 10.6 31.6V14z"/>
+        <path d="M23.6 32.6l5.8 5.9 11.3-12"/>
+      </svg>
+    </div>
+
+    <div class="seg__title">
+      <p class="eyebrow mono" data-reveal><span data-i18n="seg.eyebrow">Segurança e tranquilidade</span></p>
+      <h2 class="h2" id="seg-t" data-reveal data-i18n-html="seg.title">
+        No meio de São Paulo,<br>um lugar calmo para voltar.
+      </h2>
+    </div>
+
+    <!-- CONTEÚDO: inserir informações confirmadas de segurança do prédio -->
+    <!-- SUBSTITUIR TEXTO — parágrafo provisório -->
+    <div class="seg__txt" data-reveal style="--i:1">
+      <p class="lead" data-i18n="seg.p1">
+        A cidade acontece ali fora. Aqui dentro, o volume baixa.
+      </p>
+      <p class="txt" style="margin-top:var(--sp-4)" data-i18n="seg.p2">
+        Texto provisório: esta seção vai descrever, em linguagem simples, como funcionam
+        o acesso ao prédio, a portaria e a entrada no studio — apenas com informações confirmadas.
+      </p>
+      <p class="provisorio" style="margin-top:var(--sp-5)" data-i18n="seg.tag">
+        Texto provisório — aguardando dados do prédio
+      </p>
+    </div>
+
+    <div class="seg__side" data-reveal style="--i:2">
+      <ul class="list-ed">
+        <li><span data-i18n="seg.i1">Acesso ao prédio</span><span class="tbc" data-i18n="tbc.long">Informação a confirmar</span></li>
+        <li><span data-i18n="seg.i2">Portaria</span><span class="tbc" data-i18n="tbc.long">Informação a confirmar</span></li>
+        <li><span data-i18n="seg.i3">Entrada no studio</span><span class="tbc" data-i18n="tbc.long">Informação a confirmar</span></li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     NEIGHBORHOOD
+     ============================================================ -->
+<section class="band nb" id="bairro" aria-labelledby="nb-t">
+  <div class="wrap nb__in">
+
+    <!-- FOTO: rua / bairro Vila Mariana — SUBSTITUIR FOTO -->
+    <figure class="nb__media" data-reveal>
+      <div class="ph" style="--ratio:16/9">
+        <div class="ph__in">
+          <span class="ph__tag">[FOTO BAIRRO 01]</span>
+          <span class="ph__note" data-i18n="ph.note">Adicionar fotografia posteriormente</span>
+          <span class="ph__spec">16:9 · 1800×1013 · images/neighborhood/bairro-01.jpg</span>
+        </div>
+      </div>
+    </figure>
+
+    <div class="nb__info" data-reveal style="--i:1">
+      <p class="eyebrow mono"><span data-i18n="nb.eyebrow">Vila Mariana</span></p>
+      <h2 class="h2" id="nb-t" data-i18n="nb.title">Ficaí perto.</h2>
+      <p class="lead" data-i18n="nb.lead">
+        Um bairro para viver São Paulo a pé, de metrô ou do seu jeito.
+      </p>
+      <p class="txt" style="margin-top:var(--sp-5)" data-i18n="nb.p1">
+        Os studios ficam na Vila Mariana, perto do metrô Vila Mariana — de onde se chega
+        a boa parte da cidade sem precisar de carro.
+      </p>
+      <ul class="list-ed nb__facts">
+        <li><span data-i18n="nb.f1">Metrô Vila Mariana</span><span class="tbc" data-i18n="nb.f1v">distância a confirmar</span></li>
+        <li><span data-i18n="nb.f2">Endereço exato</span><span class="tbc" data-i18n="nb.f2v">informado na reserva</span></li>
+      </ul>
+    </div>
+
+    <!-- FOTO: detalhe do bairro — SUBSTITUIR FOTO -->
+    <figure class="nb__small" data-reveal style="--i:2">
+      <div class="ph ph--sm" style="--ratio:4/5">
+        <div class="ph__in">
+          <span class="ph__tag">[FOTO BAIRRO 02]</span>
+          <span class="ph__spec">4:5 · 900×1125 · images/neighborhood/bairro-02.jpg</span>
+        </div>
+      </div>
+    </figure>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     GUIDE — Guia Ficaí
+     ============================================================ -->
+<section class="band band--creme gd" id="guia" aria-labelledby="gd-t">
+  <div class="wrap">
+
+    <div class="gd__head">
+      <div>
+        <p class="eyebrow mono" data-reveal><span data-i18n="gd.eyebrow">Guia Ficaí</span></p>
+        <h2 class="h2" id="gd-t" data-reveal data-i18n="gd.title">Nosso bairro, nossas escolhas.</h2>
+      </div>
+      <p class="lead" data-reveal style="--i:1" data-i18n="gd.lead">
+        Os lugares que fazem a gente gostar ainda mais de estar por aqui.
+      </p>
+    </div>
+
+    <!-- FILTROS — as categorias vivem em FICAI.categorias -->
+    <div class="filters" id="gd-filtros" role="group" aria-label="Filtrar por categoria"></div>
+
+    <!-- CONTEÚDO: substituir os 6 placeholders pelas recomendações reais.
+         Nenhum estabelecimento real ou fictício foi inserido. -->
+    <div class="gd__grid" id="gd-grid"></div>
+
+    <p class="gd__empty" id="gd-empty" hidden data-i18n="gd.empty">
+      Nenhum lugar nesta categoria ainda.
+    </p>
+
+    <p class="mono gd__count" id="gd-count" role="status" aria-live="polite"></p>
+
+    <div class="gd__cta" data-reveal>
+      <!-- ADICIONAR LINK GOOGLE MAPS — lista salva do Guia Ficaí -->
+      <a class="arrow arrow--accent" href="#" data-link="guiaMaps" rel="noopener">
+        <span data-i18n="gd.cta">Explorar nosso guia no Google Maps</span><span aria-hidden="true">→</span>
+      </a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     ABOUT — História da Ficaí
+     ============================================================ -->
+<section class="band band--verde ab" id="sobre" aria-labelledby="ab-t">
+  <div class="wrap ab__in">
+
+    <p class="eyebrow mono ab__head" data-reveal><span data-i18n="ab.eyebrow">A Ficaí</span></p>
+
+    <h2 class="h2 ab__title" id="ab-t" data-reveal data-i18n="ab.title">
+      Mais do que um lugar para ficar.
+    </h2>
+
+    <!-- CONTEÚDO: substituir pela história real da Ficaí -->
+    <!-- SUBSTITUIR TEXTO — nada aqui é definitivo; nenhuma história foi inventada -->
+    <div class="ab__txt" data-reveal style="--i:1">
+      <p class="lead" data-i18n="ab.p1">
+        Texto provisório. Este espaço vai contar como a Ficaí nasceu, quem está por trás
+        e o que a gente entende por hospitalidade.
+      </p>
+      <p class="txt" data-i18n="ab.p2">
+        A estrutura prevista é: a origem da marca, as pessoas, o propósito e o cuidado
+        colocado nos espaços — escrito na primeira pessoa, sem linguagem de hotel.
+      </p>
+      <p class="txt" data-i18n="ab.p3">
+        Reserve aqui de 3 a 4 parágrafos curtos.
+      </p>
+    </div>
+
+    <!-- FOTO: retrato / bastidor da marca — SUBSTITUIR FOTO -->
+    <figure class="ab__media" data-reveal style="--i:2">
+      <div class="ph" style="--ratio:4/5">
+        <div class="ph__in">
+          <span class="ph__tag">[FOTO SOBRE]</span>
+          <span class="ph__note" data-i18n="ph.note">Adicionar fotografia posteriormente</span>
+          <span class="ph__spec">4:5 · 1000×1250 · images/brand/sobre-01.jpg</span>
+        </div>
+      </div>
+    </figure>
+
+    <p class="provisorio ab__sign" data-reveal data-i18n="ab.tag">
+      Texto provisório — aguardando a história real
+    </p>
+
+  </div>
+</section>
+
+<!-- ============================================================
+     BOOKING
+     ============================================================ -->
+<section class="band bk" id="reserva" aria-labelledby="bk-t">
+  <div class="wrap">
+
+    <div class="bk__head">
+      <p class="eyebrow mono" data-reveal><span data-i18n="bk.eyebrow">Reserva</span></p>
+      <h2 class="h2" id="bk-t" data-reveal data-i18n="bk.title">Então, ficaí?</h2>
+      <p class="lead" style="margin-top:var(--sp-5);--i:1" data-reveal data-i18n="bk.lead">
+        Escolha seu studio, consulte suas datas e reserve da forma que preferir.
+      </p>
+    </div>
+
+    <div class="bk__paths">
+
+      <div class="bk__col" data-reveal>
+        <p class="mono" data-i18n="bk.a.k">Airbnb</p>
+        <h3 class="h3" data-i18n="bk.a.t">Cada studio tem o seu anúncio.</h3>
+        <p class="txt" style="font-size:var(--fs-sm);margin-bottom:var(--sp-5)" data-i18n="bk.a.p">
+          Os cinco studios são anunciados individualmente. Escolha o seu e veja as datas disponíveis.
+        </p>
+        <!-- ADICIONAR LINK AIRBNB — um por studio, em FICAI.studios[].airbnbUrl -->
+        <ul class="bk__list" id="bk-airbnb"></ul>
+      </div>
+
+      <div class="bk__col" data-reveal style="--i:1">
+        <p class="mono" data-i18n="bk.w.k">Reserva direta</p>
+        <h3 class="h3" data-i18n="bk.w.t">Fale com a gente.</h3>
+        <div class="bk__wa">
+          <p class="txt" data-i18n="bk.w.p">
+            Consulte disponibilidade, tire suas dúvidas e faça sua reserva diretamente com a gente.
+          </p>
+          <!-- ADICIONAR LINK WHATSAPP -->
+          <a class="btn btn--solid btn--lg" style="margin-top:var(--sp-5)" href="#" data-link="whatsapp" rel="noopener">
+            <span data-i18n="bk.w.cta">Falar pelo WhatsApp</span>
+          </a>
+          <p class="mono" style="margin-top:var(--sp-4)" data-i18n="bk.w.note">
+            Respostas em horário comercial · detalhes a confirmar
+          </p>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ============================================================
+     FAQ
+     ============================================================ -->
+<section class="band band--creme faq" id="faq" aria-labelledby="faq-t">
+  <div class="wrap faq__in">
+
+    <div class="faq__head">
+      <p class="eyebrow mono" data-reveal><span data-i18n="faq.eyebrow">Dúvidas</span></p>
+      <h2 class="h2" id="faq-t" data-reveal data-i18n="faq.title">Perguntas frequentes.</h2>
+    </div>
+
+    <!-- CONTEÚDO: onde a política ainda não foi definida, a resposta é
+         "Informação a confirmar." Nenhuma política foi inventada. -->
+    <div class="faq__list" data-reveal style="--i:1">
+
+      <details class="faq__item" name="faq">
+        <summary><span data-i18n="faq.q1">Como funciona o check-in?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+        <div class="faq__body"><div><p data-i18n="faq.a1">Informação a confirmar.</p></div></div>
+      </details>
+
+      <details class="faq__item" name="faq">
+        <summary><span data-i18n="faq.q2">Como funciona o check-out?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+        <div class="faq__body"><div><p data-i18n="faq.a2">Informação a confirmar.</p></div></div>
+      </details>
+
+      <details class="faq__item" name="faq">
+        <summary><span data-i18n="faq.q3">Quantas pessoas cada studio acomoda?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+        <div class="faq__body"><div><p data-i18n="faq.a3">Os studios 01 e 02 têm 28 m² e acomodam até 3 hóspedes. Os studios 03, 04 e 05 têm 26 m² e acomodam até 2 hóspedes.</p></div></div>
+      </details>
+
+      <details class="faq__item" name="faq">
+        <summary><span data-i18n="faq.q4">Posso reservar diretamente?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+        <div class="faq__body"><div><p data-i18n="faq.a4">Pode. Além do Airbnb, é possível falar com a gente pelo WhatsApp e reservar direto. As condições da reserva direta serão detalhadas aqui.</p></div></div>
+      </details>
+
+      <details class="faq__item" name="faq">
+        <summary><span data-i18n="faq.q5">Como funciona a reserva pelo Airbnb?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+        <div class="faq__body"><div><p data-i18n="faq.a5">Cada um dos cinco studios terá o seu próprio anúncio no Airbnb. Os links ficarão disponíveis nesta página.</p></div></div>
+      </details>
+
+      <details class="faq__item" name="faq">
+        <summary><span data-i18n="faq.q6">Há estacionamento?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+        <div class="faq__body"><div><p data-i18n="faq.a6">Informação a confirmar.</p></div></div>
+      </details>
+
+      <details class="faq__item" name="faq">
+        <summary><span data-i18n="faq.q7">Pets são permitidos?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+        <div class="faq__body"><div><p data-i18n="faq.a7">Informação a confirmar.</p></div></div>
+      </details>
+
+      <details class="faq__item" name="faq">
+        <summary><span data-i18n="faq.q8">Qual a distância do metrô?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+        <div class="faq__body"><div><p data-i18n="faq.a8">Os studios ficam perto do metrô Vila Mariana. A distância exata é informação a confirmar.</p></div></div>
+      </details>
+
+      <details class="faq__item" name="faq">
+        <summary><span data-i18n="faq.q9">O prédio possui academia?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+        <div class="faq__body"><div><p data-i18n="faq.a9">Sim, o prédio tem academia. Horários e regras de uso: informação a confirmar.</p></div></div>
+      </details>
+
+      <details class="faq__item" name="faq">
+        <summary><span data-i18n="faq.q10">Há lavanderia?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+        <div class="faq__body"><div><p data-i18n="faq.a10">Sim, o prédio tem lavanderia. Os studios também têm máquina de lavar. Demais detalhes: informação a confirmar.</p></div></div>
+      </details>
+
+      <details class="faq__item" name="faq">
+        <summary><span data-i18n="faq.q11">Como funciona o cancelamento?</span><span class="faq__sign" aria-hidden="true"></span></summary>
+        <div class="faq__body"><div><p data-i18n="faq.a11">Informação a confirmar.</p></div></div>
+      </details>
+
+    </div>
+  </div>
+</section>
+
+</main>
+
+<!-- ============================================================
+     FOOTER
+     ============================================================ -->
+<footer class="band band--escura ft">
+  <div class="wrap">
+    <div class="ft__top">
+
+      <div class="ft__brand">
+        <p class="mono" data-i18n="footer.marca">Ficaí</p>
+        <p class="assin" data-i18n="footer.assin">Seu lugar por aqui.</p>
+        <address>
+          <span class="mono" data-i18n="footer.local">Vila Mariana · São Paulo — SP</span>
+        </address>
+      </div>
+
+      <div class="ft__cols">
+        <div>
+          <h4 class="mono" data-i18n="footer.h1">Navegar</h4>
+          <ul>
+            <li><a href="#studios"   data-i18n="nav.studios">Studios</a></li>
+            <li><a href="#bairro"    data-i18n="nav.bairro">Vila Mariana</a></li>
+            <li><a href="#sobre"     data-i18n="nav.sobre">Sobre</a></li>
+            <li><a href="#faq"       data-i18n="nav.faq">FAQ</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="mono" data-i18n="footer.h2">Reservar</h4>
+          <ul>
+            <!-- ADICIONAR LINK WHATSAPP -->
+            <li><a href="#" data-link="whatsapp" rel="noopener">WhatsApp</a></li>
+            <!-- ADICIONAR LINK AIRBNB (perfil do anfitrião) -->
+            <li><a href="#" data-link="airbnbHost" rel="noopener">Airbnb</a></li>
+            <!-- ADICIONAR LINK INSTAGRAM -->
+            <li><a href="#" data-link="instagram" rel="noopener">Instagram</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="mono" data-i18n="footer.h3">Contato</h4>
+          <ul>
+            <li><a href="#reserva" data-i18n="nav.reservar">Reservar</a></li>
+            <li><a href="#guia" data-i18n="footer.guia">Guia Ficaí</a></li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+
+    <span class="ft__word" aria-hidden="true">FICA<span class="wm__i">I<svg class="wm__acc" viewBox="0 0 24 10"><path d="M2.6 8.4 L21.2 2"/></svg></span></span>
+
+    <div class="ft__bottom">
+      <p class="mono" data-i18n="footer.copy">© 2026 Ficaí</p>
+      <div class="ft__legal">
+        <!-- ADICIONAR LINK — Termos -->
+        <a class="mono" href="#" data-link="termos" data-i18n="footer.termos">Termos</a>
+        <!-- ADICIONAR LINK — Política de privacidade -->
+        <a class="mono" href="#" data-link="privacidade" data-i18n="footer.privacidade">Política de privacidade</a>
+      </div>
+    </div>
+  </div>
+</footer>
+
+<!-- ============================================================
+     MODAL DO STUDIO
+     ============================================================ -->
+<dialog class="modal" id="studio-dialog" aria-labelledby="modal-t">
+  <div class="modal__scroll">
+    <div class="modal__head">
+      <div>
+        <p class="mono" id="modal-num"></p>
+        <h2 class="h2" id="modal-t" style="font-size:var(--fs-h3);margin-top:var(--sp-2)"></h2>
+      </div>
+      <button class="modal__close" id="modal-close" aria-label="Fechar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" aria-hidden="true"><path d="M6 6l12 12M18 6L6 18"/></svg>
+      </button>
+    </div>
+
+    <!-- SUBSTITUIR FOTO — galeria do studio -->
+    <div class="modal__gal" id="modal-gal"></div>
+
+    <div class="modal__body">
+      <div>
+        <dl class="modal__specs">
+          <div>
+            <dt class="mono" data-i18n="modal.area">Área</dt>
+            <dd id="modal-area"></dd>
+          </div>
+          <div>
+            <dt class="mono" data-i18n="modal.guests">Hóspedes</dt>
+            <dd id="modal-guests"></dd>
+          </div>
+        </dl>
+        <p class="modal__ref" data-i18n="modal.ref">
+          Roupa de cama, cozinha equipada, máquina de lavar, ar-condicionado e Wi-Fi são
+          iguais nos cinco studios.
+        </p>
+      </div>
+      <div>
+        <p class="txt" id="modal-desc"></p>
+        <div class="modal__ctas">
+          <!-- ADICIONAR LINK AIRBNB -->
+          <a class="btn btn--solid" id="modal-airbnb" href="#" rel="noopener" data-i18n="modal.airbnb">Ver no Airbnb</a>
+          <!-- ADICIONAR LINK WHATSAPP -->
+          <a class="btn" id="modal-wa" href="#" rel="noopener" data-i18n="modal.wa">Reservar pelo WhatsApp</a>
+        </div>
+        <p class="provisorio" style="margin-top:var(--sp-5)" data-i18n="modal.tag">Links provisórios</p>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<script>
+/* ============================================================
+   DADOS — tudo o que muda com o tempo mora aqui.
+   Para atualizar o site depois, edite este objeto.
+   ============================================================ */
+const FICAI = {
+
+  /* LINKS PROVISÓRIOS — SUBSTITUIR PELOS DEFINITIVOS
+     whatsapp: use o formato https://wa.me/55DDDNÚMERO?text=... */
+  links: {
+    whatsapp:    '#',   // ADICIONAR LINK WHATSAPP
+    instagram:   '#',   // ADICIONAR LINK INSTAGRAM
+    airbnbHost:  '#',   // ADICIONAR LINK AIRBNB (perfil do anfitrião)
+    guiaMaps:    '#',   // ADICIONAR LINK GOOGLE MAPS (lista do Guia Ficaí)
+    termos:      '#',   // ADICIONAR LINK
+    privacidade: '#'    // ADICIONAR LINK
+  },
+
+  /* STUDIOS
+     capa    → images/studios/studio-XX-01.jpg   (4:5,  1200×1500)
+     galeria → images/studios/studio-XX-0N.jpg   (3:2,  1600×1067)
+     As amenidades NÃO se repetem aqui — vivem na seção "O que você encontra". */
+  studios: [
+    { id:'01', destaque:true,  area:'28 m²', cap:{pt:'Até 3 hóspedes', en:'Up to 3 guests'},
+      desc:{pt:'Descrição a adicionar.', en:'Description to be added.'},
+      fotos:3, airbnbUrl:'#' },   // ADICIONAR LINK AIRBNB
+    { id:'02', destaque:true,  area:'28 m²', cap:{pt:'Até 3 hóspedes', en:'Up to 3 guests'},
+      desc:{pt:'Descrição a adicionar.', en:'Description to be added.'},
+      fotos:3, airbnbUrl:'#' },   // ADICIONAR LINK AIRBNB
+    { id:'03', destaque:false, area:'26 m²', cap:{pt:'Até 2 hóspedes', en:'Up to 2 guests'},
+      desc:{pt:'Descrição a adicionar.', en:'Description to be added.'},
+      fotos:3, airbnbUrl:'#' },   // ADICIONAR LINK AIRBNB
+    { id:'04', destaque:false, area:'26 m²', cap:{pt:'Até 2 hóspedes', en:'Up to 2 guests'},
+      desc:{pt:'Descrição a adicionar.', en:'Description to be added.'},
+      fotos:3, airbnbUrl:'#' },   // ADICIONAR LINK AIRBNB
+    { id:'05', destaque:false, area:'26 m²', cap:{pt:'Até 2 hóspedes', en:'Up to 2 guests'},
+      desc:{pt:'Descrição a adicionar.', en:'Description to be added.'},
+      fotos:3, airbnbUrl:'#' }    // ADICIONAR LINK AIRBNB
+  ],
+
+  /* CATEGORIAS DO GUIA — a chave 'todos' é sempre a primeira */
+  categorias: [
+    { id:'todos',      pt:'Todos',                   en:'All' },
+    { id:'comer',      pt:'Comer & beber',           en:'Eat & drink' },
+    { id:'cafes',      pt:'Cafés',                   en:'Coffee' },
+    { id:'cultura',    pt:'Cultura & entretenimento',en:'Culture & entertainment' },
+    { id:'exercicios', pt:'Exercícios',              en:'Exercise' },
+    { id:'bemestar',   pt:'Bem-estar',               en:'Wellness' },
+    { id:'lazer',      pt:'Lazer',                   en:'Leisure' },
+    { id:'compras',    pt:'Compras',                 en:'Shopping' },
+    { id:'essenciais', pt:'Essenciais',              en:'Essentials' },
+    { id:'passos',     pt:'A poucos passos',         en:'A few steps away' }
+  ],
+
+  /* GUIA FICAÍ — 6 PLACEHOLDERS.
+     CONTEÚDO: substituir pelos lugares reais. Nada aqui é um estabelecimento
+     de verdade nem inventado: são espaços reservados.
+     Ao preencher: nome, categoria (id acima), descricao, distancia, imagem, mapsUrl */
+  guia: [
+    { id:'01', cat:'todos', nome:{pt:'[LUGAR 01]', en:'[PLACE 01]'},
+      desc:{pt:'Descrição a adicionar', en:'Description to be added'},
+      dist:'—', mapsUrl:'#' },   // ADICIONAR LINK GOOGLE MAPS
+    { id:'02', cat:'todos', nome:{pt:'[LUGAR 02]', en:'[PLACE 02]'},
+      desc:{pt:'Descrição a adicionar', en:'Description to be added'},
+      dist:'—', mapsUrl:'#' },   // ADICIONAR LINK GOOGLE MAPS
+    { id:'03', cat:'todos', nome:{pt:'[LUGAR 03]', en:'[PLACE 03]'},
+      desc:{pt:'Descrição a adicionar', en:'Description to be added'},
+      dist:'—', mapsUrl:'#' },   // ADICIONAR LINK GOOGLE MAPS
+    { id:'04', cat:'todos', nome:{pt:'[LUGAR 04]', en:'[PLACE 04]'},
+      desc:{pt:'Descrição a adicionar', en:'Description to be added'},
+      dist:'—', mapsUrl:'#' },   // ADICIONAR LINK GOOGLE MAPS
+    { id:'05', cat:'todos', nome:{pt:'[LUGAR 05]', en:'[PLACE 05]'},
+      desc:{pt:'Descrição a adicionar', en:'Description to be added'},
+      dist:'—', mapsUrl:'#' },   // ADICIONAR LINK GOOGLE MAPS
+    { id:'06', cat:'todos', nome:{pt:'[LUGAR 06]', en:'[PLACE 06]'},
+      desc:{pt:'Descrição a adicionar', en:'Description to be added'},
+      dist:'—', mapsUrl:'#' }    // ADICIONAR LINK GOOGLE MAPS
+  ]
+};
+
+/* ============================================================
+   I18N
+   O português é a fonte: é lido direto do HTML na carga (bom para
+   SEO e para não duplicar a copy). Aqui embaixo fica só o inglês.
+   Para traduzir algo novo: adicione data-i18n="chave" no HTML
+   e a mesma chave neste dicionário.
+   ============================================================ */
+const EN = {
+  'a11y.skip':'Skip to content',
+
+  'nav.studios':'Studios', 'nav.exp':'The experience', 'nav.bairro':'Vila Mariana',
+  'nav.sobre':'About', 'nav.faq':'FAQ', 'nav.reservar':'Book',
+
+  'hero.eyebrow':'Studios · Vila Mariana · São Paulo',
+  'hero.l1':'A few days in São Paulo?',   /* hero.l2 nao existe aqui: a marca nao se traduz */
+  'hero.lead':'Premium studios in Vila Mariana, designed so you have comfort, quiet and everything you need to feel at home.',
+  'hero.cta1':'Find your studio', 'hero.cta2':'Chat on WhatsApp',
+  'hero.m1':'Five studios', 'hero.m2':'26 and 28 m²', 'hero.m3':'Near Vila Mariana metro',
+
+  'ph.note':'Photograph to be added later',
+  'tbc.short':'to confirm', 'tbc.long':'To be confirmed',
+
+  'mani.eyebrow':'Manifesto', 'mani.title':'Make yourself at home.',
+  'mani.p1':'We believe being away from home shouldn’t mean giving up the feeling of being at home.',
+  'mani.p2':'That’s why every space was considered down to the details: comfort, practicality, quiet and everything you’d want to find when you arrive.',
+
+  'st.eyebrow':'The studios', 'st.title':'Choose your place.',
+  'st.lead':'Five studios. The same care in every detail.',
+  'st.railLabel':'26 m² · up to 2 guests · studios 03—05',
+  'st.cta':'See the studio',
+
+  'am.eyebrow':'The experience', 'am.title':'You arrive.<br>The rest is already here.',
+  'am.sub':'Everything below is the same in all five studios.',
+  'am.c1.k':'To live', 'am.c1.t':'The basics, done well.',
+  'am.c1.i1':'Bed linen', 'am.c1.i2':'Towels', 'am.c1.i3':'Air conditioning',
+  'am.c1.i4':'TV', 'am.c1.i5':'Wi-Fi', 'am.c1.i6':'Hair dryer', 'am.c1.i7':'Other essentials',
+  'am.c2.k':'To cook', 'am.c2.t':'A real kitchen.',
+  'am.c2.i1':'Fully equipped kitchen', 'am.c2.i2':'Cooktop', 'am.c2.i3':'Microwave',
+  'am.c2.i4':'Coffee maker', 'am.c2.i5':'Blender', 'am.c2.i6':'Dishes, pans and utensils',
+  'am.c3.k':'For the routine', 'am.c3.t':'Longer stays work too.',
+  'am.c3.i1':'Washing machine', 'am.c3.i2':'Further items',
+  'am.c4.k':'In the building', 'am.c4.t':'Beyond the studio door.',
+  'am.c4.i1':'Gym', 'am.c4.i2':'Laundry room', 'am.c4.i3':'Other facilities',
+  'am.note':'Provisional list — review before publishing',
+
+  'seg.eyebrow':'Safety and quiet',
+  'seg.title':'In the middle of São Paulo,<br>a calm place to come back to.',
+  'seg.p1':'The city happens out there. In here, the volume drops.',
+  'seg.p2':'Provisional text: this section will describe, in plain language, how building access, the front desk and entry to the studio work — using confirmed information only.',
+  'seg.tag':'Provisional text — awaiting building details',
+  'seg.i1':'Building access', 'seg.i2':'Front desk', 'seg.i3':'Studio entry',
+
+  'nb.eyebrow':'Vila Mariana', 'nb.title':'Everything close by.',
+  'nb.lead':'A neighbourhood for living São Paulo on foot, by metro or your own way.',
+  'nb.p1':'The studios are in Vila Mariana, near the Vila Mariana metro station — from there you reach much of the city without a car.',
+  'nb.f1':'Vila Mariana metro', 'nb.f1v':'distance to confirm',
+  'nb.f2':'Exact address', 'nb.f2v':'shared on booking',
+
+  'gd.eyebrow':'Ficaí Guide', 'gd.title':'Our neighbourhood, our picks.',
+  'gd.lead':'The places that make us like being here even more.',
+  'gd.cta':'Explore our guide on Google Maps',
+  'gd.maps':'View on Google Maps',
+  'gd.empty':'No places in this category yet.',
+  'gd.count':'{n} of {total} places',
+
+  'ab.eyebrow':'Ficaí', 'ab.title':'More than a place to stay.',
+  'ab.p1':'Provisional text. This space will tell how Ficaí came about, who is behind it and what we mean by hospitality.',
+  'ab.p2':'The planned structure is: the origin of the brand, the people, the purpose and the care put into the spaces — written in the first person, without hotel language.',
+  'ab.p3':'Reserve 3 to 4 short paragraphs here.',
+  'ab.tag':'Provisional text — awaiting the real story',
+
+  'bk.eyebrow':'Booking', 'bk.title':'So — will you stay?',
+  'bk.lead':'Choose your studio, check your dates and book the way you prefer.',
+  'bk.a.k':'Airbnb', 'bk.a.t':'Each studio has its own listing.',
+  'bk.a.p':'All five studios are listed individually. Pick yours and check the available dates.',
+  'bk.a.cta':'View on Airbnb', 'bk.a.soon':'link to be added',
+  'bk.w.k':'Direct booking', 'bk.w.t':'Talk to us.',
+  'bk.w.p':'Check availability, ask your questions and book directly with us.',
+  'bk.w.cta':'Chat on WhatsApp',
+  'bk.w.note':'Replies during business hours · details to confirm',
+
+  'faq.eyebrow':'Questions', 'faq.title':'Frequently asked.',
+  'faq.q1':'How does check-in work?',  'faq.a1':'To be confirmed.',
+  'faq.q2':'How does check-out work?', 'faq.a2':'To be confirmed.',
+  'faq.q3':'How many people does each studio sleep?',
+  'faq.a3':'Studios 01 and 02 are 28 m² and sleep up to 3 guests. Studios 03, 04 and 05 are 26 m² and sleep up to 2 guests.',
+  'faq.q4':'Can I book directly?',
+  'faq.a4':'Yes. Besides Airbnb, you can reach us on WhatsApp and book directly. The direct booking terms will be detailed here.',
+  'faq.q5':'How does booking on Airbnb work?',
+  'faq.a5':'Each of the five studios will have its own Airbnb listing. The links will be available on this page.',
+  'faq.q6':'Is there parking?', 'faq.a6':'To be confirmed.',
+  'faq.q7':'Are pets allowed?',  'faq.a7':'To be confirmed.',
+  'faq.q8':'How far is the metro?',
+  'faq.a8':'The studios are near the Vila Mariana metro station. The exact distance is to be confirmed.',
+  'faq.q9':'Does the building have a gym?',
+  'faq.a9':'Yes, the building has a gym. Opening hours and rules: to be confirmed.',
+  'faq.q10':'Is there a laundry room?',
+  'faq.a10':'Yes, the building has a laundry room. The studios also have a washing machine. Further details: to be confirmed.',
+  'faq.q11':'How does cancellation work?', 'faq.a11':'To be confirmed.',
+
+  'footer.marca':'Ficaí', 'footer.assin':'Your place around here.',
+  'footer.local':'Vila Mariana · São Paulo — SP',
+  'footer.h1':'Navigate', 'footer.h2':'Book', 'footer.h3':'Contact',
+  'footer.guia':'Ficaí Guide', 'footer.copy':'© 2026 Ficaí',
+  'footer.termos':'Terms', 'footer.privacidade':'Privacy policy',
+
+  'modal.area':'Area', 'modal.guests':'Guests',
+  'modal.ref':'Bed linen, equipped kitchen, washing machine, air conditioning and Wi-Fi are the same in all five studios.',
+  'modal.airbnb':'View on Airbnb', 'modal.wa':'Book on WhatsApp',
+  'modal.tag':'Provisional links',
+  'modal.studio':'Studio'
+};
+
+/* ============================================================
+   APP
+   ============================================================ */
+(() => {
+  'use strict';
+  const $  = (s, r = document) => r.querySelector(s);
+  const $$ = (s, r = document) => Array.from(r.querySelectorAll(s));
+  const reduz = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+  /* ---------- i18n ---------- */
+  const PT = {};                       // preenchido a partir do HTML
+  let lang = 'pt';
+
+  $$('[data-i18n], [data-i18n-html]').forEach(el => {
+    const k = el.dataset.i18n || el.dataset.i18nHtml;
+    if (!(k in PT)) PT[k] = el.innerHTML;
+  });
+
+  /* Chaves que nao existem no HTML porque pertencem ao conteudo
+     renderizado por JS. O portugues fica aqui; o ingles, no dicionario EN. */
+  const PT_JS = {
+    'st.cta':     'Conhecer o studio',
+    'gd.maps':    'Ver no Google Maps',
+    'gd.count':   '{n} de {total} lugares',
+    'bk.a.cta':   'Ver no Airbnb',
+    'bk.a.soon':  'link a adicionar',
+    'modal.studio':'Studio'
+  };
+  for (const k in PT_JS) if (!(k in PT)) PT[k] = PT_JS[k];
+
+  const t = k => (lang === 'en' ? (EN[k] ?? PT[k] ?? k) : (PT[k] ?? k));
+
+  function aplicarIdioma(novo){
+    lang = novo;
+    document.documentElement.lang = novo === 'en' ? 'en' : 'pt-BR';
+    $$('[data-i18n], [data-i18n-html]').forEach(el => {
+      const k = el.dataset.i18n || el.dataset.i18nHtml;
+      const v = t(k);
+      if (v != null) el.innerHTML = v;
+    });
+    $$('.lang button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.lang === novo)));
+    $('#burger')?.setAttribute('aria-label', novo === 'en' ? 'Open menu' : 'Abrir menu');
+    $('#modal-close')?.setAttribute('aria-label', novo === 'en' ? 'Close' : 'Fechar');
+    try { localStorage.setItem('ficai-lang', novo); } catch(e){}
+    renderStudios(); renderGuia(); renderAirbnb();
+  }
+
+  $$('.lang button').forEach(b => b.addEventListener('click', () => aplicarIdioma(b.dataset.lang)));
+
+  /* ---------- links provisórios ---------- */
+  function aplicarLinks(){
+    $$('[data-link]').forEach(a => {
+      const url = FICAI.links[a.dataset.link];
+      a.href = url || '#';
+      if (!url || url === '#'){
+        a.setAttribute('aria-disabled', 'true');
+        a.title = 'Link a adicionar';
+      } else {
+        a.removeAttribute('aria-disabled');
+        a.target = '_blank'; a.rel = 'noopener noreferrer';
+      }
+    });
+  }
+
+  /* ---------- placeholder de foto ---------- */
+  function ph({ tag, ratio, spec, sm = false, nota = true }){
+    return `<div class="ph${sm ? ' ph--sm' : ''}" style="--ratio:${ratio}">
+      <div class="ph__in">
+        <span class="ph__tag">${tag}</span>
+        ${nota ? `<span class="ph__note">${t('ph.note')}</span>` : ''}
+        <span class="ph__spec">${spec}</span>
+      </div>
+    </div>`;
+  }
+
+  /* ============================================================
+     STUDIOS — render a partir de FICAI.studios
+     ============================================================ */
+  function renderStudios(){
+    const destaque = FICAI.studios.filter(s => s.destaque);
+    const trilho   = FICAI.studios.filter(s => !s.destaque);
+    const nome     = s => `${t('modal.studio')} ${s.id}`;
+
+    /* SUBSTITUIR FOTO — capa de cada studio */
+    $('#studios-destaque').innerHTML = destaque.map((s, i) => `
+      <article class="sd" data-reveal style="--i:${i}">
+        <div class="sd__media">
+          ${ph({ tag:`[FOTO STUDIO ${s.id}]`, ratio:'4/5',
+                 spec:`4:5 · 1200×1500 · images/studios/studio-${s.id}-01.jpg` })}
+        </div>
+        <div class="sd__info">
+          <span class="num">${s.id}</span>
+          <h3 class="h3">${nome(s)}</h3>
+          <dl class="sd__specs">
+            <div><dt class="mono">${t('modal.area')}</dt><dd>${s.area}</dd></div>
+            <div><dt class="mono">${t('modal.guests')}</dt><dd>${s.cap[lang]}</dd></div>
+          </dl>
+          <p class="sd__desc">${s.desc[lang]}</p>
+          <button class="arrow" type="button" data-studio="${s.id}">
+            <span>${t('st.cta')}</span><span aria-hidden="true">→</span>
+          </button>
+        </div>
+      </article>`).join('');
+
+    $('#studios-rail').innerHTML = trilho.map((s, i) => `
+      <article class="st-card" data-reveal style="--i:${i}">
+        ${ph({ tag:`[FOTO STUDIO ${s.id}]`, ratio:'4/5', sm:true,
+               spec:`4:5 · 1200×1500 · images/studios/studio-${s.id}-01.jpg` })}
+        <span class="num">${s.id}</span>
+        <h3 class="h3">${nome(s)}</h3>
+        <p class="mono">${s.area} · ${s.cap[lang]}</p>
+        <button class="arrow" type="button" data-studio="${s.id}">
+          <span>${t('st.cta')}</span><span aria-hidden="true">→</span>
+        </button>
+      </article>`).join('');
+
+    observarReveal();
+    atualizarSetas();
+  }
+
+  /* ============================================================
+     GUIDE
+     ============================================================ */
+  let filtroAtivo = 'todos';
+
+  function renderFiltros(){
+    $('#gd-filtros').innerHTML = FICAI.categorias.map(c =>
+      `<button type="button" data-cat="${c.id}" aria-pressed="${c.id === filtroAtivo}">${c[lang]}</button>`
+    ).join('');
+  }
+
+  function renderGuia(){
+    renderFiltros();
+    /* SUBSTITUIR FOTO — cada recomendação do guia */
+    $('#gd-grid').innerHTML = FICAI.guia.map((g, i) => {
+      const cat = FICAI.categorias.find(c => c.id === g.cat) || FICAI.categorias[0];
+      return `<article class="gd-card" data-cat="${g.cat}" data-reveal style="--i:${i % 3}">
+        ${ph({ tag:`[LUGAR ${g.id}]`, ratio:'4/3', sm:true,
+               spec:`4:3 · 1200×900 · images/neighborhood/guia-${g.id}.jpg` })}
+        <div class="gd-card__top">
+          <h3 class="h3">${g.nome[lang]}</h3>
+          <span class="mono">${g.dist}</span>
+        </div>
+        <p class="mono">${cat[lang]}</p>
+        <p class="txt">${g.desc[lang]}</p>
+        <a class="arrow arrow--accent" href="${g.mapsUrl}" ${g.mapsUrl !== '#' ? 'target="_blank" rel="noopener noreferrer"' : 'aria-disabled="true"'}>
+          <span>${t('gd.maps')}</span><span aria-hidden="true">→</span>
+        </a>
+      </article>`;
+    }).join('');
+    filtrar(filtroAtivo);
+    observarReveal();
+  }
+
+  function filtrar(cat){
+    filtroAtivo = cat;
+    let visiveis = 0;
+    $$('#gd-grid .gd-card').forEach(c => {
+      const ok = cat === 'todos' || c.dataset.cat === cat;
+      c.hidden = !ok;
+      if (ok) visiveis++;
+    });
+    $$('#gd-filtros button').forEach(b => b.setAttribute('aria-pressed', String(b.dataset.cat === cat)));
+    $('#gd-empty').hidden = visiveis > 0;
+    $('#gd-count').textContent = t('gd.count')
+      .replace('{n}', visiveis).replace('{total}', FICAI.guia.length);
+  }
+
+  $('#gd-filtros').addEventListener('click', e => {
+    const b = e.target.closest('button[data-cat]');
+    if (b) filtrar(b.dataset.cat);
+  });
+
+  /* ============================================================
+     BOOKING — lista de anúncios do Airbnb
+     ============================================================ */
+  function renderAirbnb(){
+    $('#bk-airbnb').innerHTML = FICAI.studios.map(s => {
+      const temLink = s.airbnbUrl && s.airbnbUrl !== '#';
+      /* ADICIONAR LINK AIRBNB em FICAI.studios[].airbnbUrl */
+      return `<li>
+        <a class="bk__row" href="${s.airbnbUrl}"
+           ${temLink ? 'target="_blank" rel="noopener noreferrer"' : 'aria-disabled="true"'}>
+          <span><span class="mono">${s.id}</span> &nbsp; ${t('modal.studio')} ${s.id} &nbsp;
+            <span class="mono">${s.area} · ${s.cap[lang]}</span></span>
+          <em>${temLink
+                ? `${t('bk.a.cta')} <span aria-hidden="true">→</span>`
+                : `<span class="tbc">${t('bk.a.soon')}</span>`}</em>
+        </a>
+      </li>`;
+    }).join('');
+  }
+
+  /* ============================================================
+     MODAL DO STUDIO
+     ============================================================ */
+  const dlg = $('#studio-dialog');
+  let ultimoFoco = null;
+
+  function abrirStudio(id){
+    const s = FICAI.studios.find(x => x.id === id);
+    if (!s) return;
+    ultimoFoco = document.activeElement;
+
+    $('#modal-num').textContent    = `${t('modal.studio')} ${s.id}`;
+    $('#modal-t').textContent      = `${t('modal.studio')} ${s.id}`;
+    $('#modal-area').textContent   = s.area;
+    $('#modal-guests').textContent = s.cap[lang];
+    $('#modal-desc').textContent   = s.desc[lang];
+
+    /* SUBSTITUIR FOTO — galeria do studio (3:2) */
+    $('#modal-gal').innerHTML = Array.from({ length: s.fotos }, (_, i) => {
+      const n = String(i + 1).padStart(2, '0');
+      return ph({ tag:`[FOTO STUDIO ${s.id} — ${n}]`, ratio:'3/2', sm:true,
+                  spec:`3:2 · 1600×1067 · images/studios/studio-${s.id}-${n}.jpg` });
+    }).join('');
+
+    const ab = $('#modal-airbnb');
+    ab.href = s.airbnbUrl || '#';
+    if (s.airbnbUrl && s.airbnbUrl !== '#'){ ab.target = '_blank'; ab.rel = 'noopener noreferrer'; ab.removeAttribute('aria-disabled'); }
+    else { ab.setAttribute('aria-disabled', 'true'); ab.removeAttribute('target'); }
+
+    const wa = $('#modal-wa');
+    wa.href = FICAI.links.whatsapp || '#';
+    if (FICAI.links.whatsapp !== '#'){ wa.target = '_blank'; wa.rel = 'noopener noreferrer'; wa.removeAttribute('aria-disabled'); }
+    else wa.setAttribute('aria-disabled', 'true');
+
+    if (typeof dlg.showModal === 'function') dlg.showModal(); else dlg.setAttribute('open', '');
+    document.body.classList.add('is-locked');
+    $('#modal-close').focus();
+  }
+
+  function fecharStudio(){
+    if (typeof dlg.close === 'function') dlg.close(); else dlg.removeAttribute('open');
+  }
+
+  dlg.addEventListener('close', () => {
+    document.body.classList.remove('is-locked');
+    ultimoFoco?.focus();
+  });
+  $('#modal-close').addEventListener('click', fecharStudio);
+  /* clique fora do conteúdo fecha */
+  dlg.addEventListener('click', e => { if (e.target === dlg) fecharStudio(); });
+
+  document.addEventListener('click', e => {
+    const b = e.target.closest('[data-studio]');
+    if (b){ abrirStudio(b.dataset.studio); return; }
+    /* links ainda sem URL nao navegam nem pulam para o topo */
+    const a = e.target.closest('a[aria-disabled="true"]');
+    if (a) e.preventDefault();
+  });
+
+  /* ============================================================
+     TRILHO DOS STUDIOS
+     ============================================================ */
+  const rail = $('#studios-rail');
+  function passo(){
+    const card = rail.querySelector('.st-card');
+    if (!card) return 320;
+    const gap = parseFloat(getComputedStyle(rail).columnGap) || 24;
+    return card.getBoundingClientRect().width + gap;
+  }
+  const railNav = document.querySelector('.rail-nav');
+  function atualizarSetas(){
+    const max = rail.scrollWidth - rail.clientWidth - 2;
+    railNav.hidden = max <= 0;          /* sem sangria, sem controles mortos */
+    $('#rail-prev').disabled = rail.scrollLeft <= 2;
+    $('#rail-next').disabled = rail.scrollLeft >= max;
+  }
+  $('#rail-prev').addEventListener('click', () =>
+    rail.scrollBy({ left: -passo(), behavior: reduz.matches ? 'auto' : 'smooth' }));
+  $('#rail-next').addEventListener('click', () =>
+    rail.scrollBy({ left:  passo(), behavior: reduz.matches ? 'auto' : 'smooth' }));
+  rail.addEventListener('scroll', atualizarSetas, { passive:true });
+  window.addEventListener('resize', atualizarSetas);
+  /* setas do teclado quando o trilho tem foco */
+  rail.addEventListener('keydown', e => {
+    if (e.key === 'ArrowRight'){ e.preventDefault(); rail.scrollBy({ left: passo(), behavior:'smooth' }); }
+    if (e.key === 'ArrowLeft'){  e.preventDefault(); rail.scrollBy({ left:-passo(), behavior:'smooth' }); }
+  });
+
+  /* ============================================================
+     HEADER — reage ao scroll via sentinel, sem listener de scroll
+     ============================================================ */
+  const hdr = $('#hdr');
+  new IntersectionObserver(
+    ([e]) => hdr.classList.toggle('is-stuck', !e.isIntersecting),
+    { threshold: 0 }
+  ).observe($('#sentinel'));
+
+  /* ============================================================
+     MENU MOBILE
+     ============================================================ */
+  const burger = $('#burger'), mmenu = $('#mmenu');
+  function menu(abrir){
+    burger.setAttribute('aria-expanded', String(abrir));
+    burger.setAttribute('aria-label',
+      abrir ? (lang === 'en' ? 'Close menu' : 'Fechar menu')
+            : (lang === 'en' ? 'Open menu'  : 'Abrir menu'));
+    document.body.classList.toggle('is-locked', abrir);
+    if (abrir){
+      mmenu.hidden = false;
+      requestAnimationFrame(() => mmenu.classList.add('is-open'));
+    } else {
+      mmenu.classList.remove('is-open');
+      const fim = () => { mmenu.hidden = true; mmenu.removeEventListener('transitionend', fim); };
+      reduz.matches ? fim() : mmenu.addEventListener('transitionend', fim);
+    }
+  }
+  burger.addEventListener('click', () => menu(burger.getAttribute('aria-expanded') !== 'true'));
+  mmenu.addEventListener('click', e => { if (e.target.closest('a')) menu(false); });
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Escape' && burger.getAttribute('aria-expanded') === 'true'){ menu(false); burger.focus(); }
+  });
+  /* prende o foco dentro do menu aberto */
+  mmenu.addEventListener('keydown', e => {
+    if (e.key !== 'Tab') return;
+    const f = $$('a, button', mmenu).filter(el => el.offsetParent !== null);
+    if (!f.length) return;
+    const [a, z] = [f[0], f[f.length - 1]];
+    if (e.shiftKey && document.activeElement === a){ e.preventDefault(); z.focus(); }
+    else if (!e.shiftKey && document.activeElement === z){ e.preventDefault(); burger.focus(); }
+  });
+
+  /* ============================================================
+     REVEAL NO SCROLL
+     ============================================================ */
+  let io;
+  function observarReveal(){
+    if (reduz.matches){
+      $$('[data-reveal]').forEach(el => el.classList.add('is-in'));
+      return;
+    }
+    io = io || new IntersectionObserver((entries, obs) => {
+      entries.forEach(e => {
+        if (e.isIntersecting){ e.target.classList.add('is-in'); obs.unobserve(e.target); }
+      });
+    }, { rootMargin:'0px 0px -8% 0px', threshold:0.06 });
+    $$('[data-reveal]:not(.is-in)').forEach(el => io.observe(el));
+  }
+  reduz.addEventListener('change', () => observarReveal());
+
+  /* Rede de segurança: se o observer não entregar a tempo — rolagem muito
+     rápida, captura de tela, restauração de posição — revela o que já passou
+     pela tela. Mesmo critério do rootMargin, então o efeito não muda. */
+  let agendado = false;
+  function varrerReveal(){
+    agendado = false;
+    const lim = window.innerHeight * 0.92;
+    $$('[data-reveal]:not(.is-in)').forEach(el => {
+      if (el.getBoundingClientRect().top < lim) el.classList.add('is-in');
+    });
+  }
+  function agendarVarredura(){
+    if (agendado) return;
+    agendado = true;
+    requestAnimationFrame(varrerReveal);
+  }
+  addEventListener('scroll', agendarVarredura, { passive:true });
+  addEventListener('resize', agendarVarredura, { passive:true });
+
+  /* ============================================================
+     INÍCIO
+     ============================================================ */
+  let salvo = 'pt';
+  try { salvo = localStorage.getItem('ficai-lang') || 'pt'; } catch(e){}
+
+  aplicarLinks();
+  renderStudios();
+  renderGuia();
+  renderAirbnb();
+  observarReveal();
+  if (salvo === 'en') aplicarIdioma('en');
+})();
+</script>
+</body>
+</html>

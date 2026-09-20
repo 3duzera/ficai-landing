@@ -1,0 +1,6 @@
+# referências internas — não fazem parte do site
+/referencias/
+
+# arquivos de sistema
+.DS_Store
+Thumbs.db
